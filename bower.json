@@ -1,0 +1,17 @@
+{
+  "name": "BMH-Client",
+  "homepage": "https://github.com/JeremyLandi/BMH-Client",
+  "authors": [
+    "JeremyLandi <LandiJeremy@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
