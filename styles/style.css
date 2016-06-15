@@ -1,0 +1,226 @@
+.navbar-inverse {
+box-shadow: 0 0 10px rgba(175,175,190, .8);
+border:none;
+}
+.navbar-inverse li{
+box-shadow:  0 0 10px rgba(175,175,190, 1);
+margin-left: 20px;
+}
+.clear {
+	clear: both;
+}
+html {
+	font-size:100%;
+	line-height:1.5;
+}
+body {
+	font-family: 'Open Sans', sans-serif;
+	background-image: url("https://lh6.googleusercontent.com/-cVLfKfUtG5I/VM1HblhKsxI/AAAAAAAAB7o/nvFh7wpIn7U/s1600/black-wood-wallpaper-wallpaper-1080p.jpg");
+    background-size: contain;
+    font-size: .8em;
+    font-weight: bold;
+    padding:0;
+    margin:0;
+    color: #2DAC90;
+}
+select {
+	width: 150px;
+	font-size: 1.1em;
+	-webkit-appearance: none;
+   	-moz-appearance:    none;
+   	appearance:         none;
+   	padding: 2px;
+}
+label {
+    font-size:1.2em; 
+}
+li {
+	list-style: none;
+}
+footer {
+	display: inline-block;
+	margin-left: 79%;
+}
+.container {
+	margin: 25px auto 0;
+	max-width: 778px;
+	padding: 10px 25px;
+	background-color: rgba(200,200,200,.3);
+	box-shadow: -5px -5px 200px #667;
+	border: 1px outset rgba(0,0,0,.5);
+}
+.navbar {
+	background-color: rgba(34,34,34,.5);
+}
+/*.active {
+	background-color: rgba(34,34,34,.5);	
+}*/
+.song {
+	border: 2px solid rgb(204,204,255);
+	margin-bottom: 10px;
+	background-color: rgba(255,255,255,.85);
+	border-radius: 10px;
+	box-shadow: 0 0 5px rgb(204,204,255);
+}
+.forms {          					
+	background-color: rgba(34,34,34,.9);
+	border: 2px solid black;
+	float: left;
+	padding: 1em;
+	margin: 5px 2px;
+	box-shadow: inset 0 0 7px rgba(175,175,190, .8);
+}
+.album_form {
+	margin-top: 15px;
+}
+.artist_form {
+	width: 100px;
+	margin-top: 10px;
+}
+.checkbox_main {
+	margin-left: -35px;
+}
+.checkbox_left {
+	margin-left: 0px;
+	float: left;
+	width: 47.2%;
+}
+.checkbox_right {
+	float: right;
+	width: 47.2%;
+}
+.submit {							
+	margin: 20px 10%;
+	border-radius: 5px;
+	border: 1px outset #000;
+	width: 80%;
+	font-size: 1.3em;
+	background-color: rgb(210,210,210);
+}
+.add {
+	margin: 20px 10%;
+	border-radius: 5px;
+	border: 1px outset #000;
+	width: 80%;
+	font-size: 1.3em;
+	background-color: rgb(210,210,210);
+}
+.moreSongs {
+	margin-left: 40%;
+	margin-top: 10px;
+	font-size: 1.2em;
+	border-radius: 5px;
+	background-color: #e5e5ea;
+}
+.deleteButton {
+	float: right;
+	margin-right: 20px;
+	margin-top: 35px;
+	font-size: .1em;
+	border-radius: 5px;
+	background-color: #e5e5ea;
+}
+.info {                				
+	background-color: rgba(34,34,34,.9);
+	border: solid 2px black;
+	float: right;
+	padding: 1em 1em 2em;
+	margin: 5px;	
+	overflow: auto;
+	overflow-y: auto;
+	height: 500px;
+}
+.addMusic {
+	background-color: rgba(34,34,34,.9);
+	border: 2px solid black;
+	float: left;
+	padding: 1em;
+	margin: 5px 2px;
+}
+
+.info h2 {
+	color: rgb(45, 172, 144);
+	display: block;
+	font-size: 1.9em;
+	margin-left: 20px;
+	padding-bottom: 5px;
+}
+.info li {
+	margin-right: 5px;
+	padding: 0 20px;
+	display: inline;
+}
+.info li:first-of-type {
+		border-right: solid 1px black; 
+}
+.info div li {
+	color: rgb(50,50,50);
+	margin-right: 5px;
+	padding: 0 20px;
+	 
+	display: inline;
+	font-size: 1.2em;
+}
+
+.hidden {
+	display: none;
+}
+
+.visible {
+	display: block;
+}
+
+
+/**********
+LOGGIN
+**********/
+.loggin, .signUp {
+	background-color: white;
+	padding-bottom: 50px;
+	border-radius: 10px;
+	width: 400px;
+	margin: 0 auto;
+}
+.signUp {
+	padding-top: 50px;
+}
+
+.signUpLink {
+	color: #31B0D5;
+}
+.logout {
+	margin-left: 120px;
+}
+  .main {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .login-or {
+    position: relative;
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
+  }
+  .hr-or {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  h3 {
+    text-align: center;
+    line-height: 300%;
+  }
