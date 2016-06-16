@@ -2,19 +2,23 @@
 
 BMH.controller('PersonalInfoCtrl', [
 	'$scope',
-	'AuthFactory',
+	'authFactory',
+	'personalInfoFactory',
 
-	function($scope, authFactory) {
+	function($scope, authFactory, personalInfoFactory) {
         var cust = authFactory.getUser();
 		
 		console.log("cust", cust);
-		console.log("cust", cust.BirthDate.split("/"));
-		var dateConverter = cust.BirthDate.split("/")
+		if (cust.BirthDate != null) {
+			console.log("cust", cust.BirthDate.split("/"));
+			var dateConverter = cust.BirthDate.split("/")
+			
+			cust.year = dateConverter[2];
+			cust.month = dateConverter[0];
+			cust.date = dateConverter[1];
+		}
 		
-		cust.year = dateConverter[2];
-		cust.month = dateConverter[0];
-		cust.date = dateConverter[1];
-		
+
 		$scope.currentCustomer = cust;
 		// $scope.currentCustomer = [
 		// 	CustFirst = cust.CustFirst,
@@ -38,8 +42,8 @@ BMH.controller('PersonalInfoCtrl', [
 		
 		//DateTime.ParseExact(YourString, "dd/MM/yyyy");
 
-		$scope.saveEdit = () => {
-			
+		$scope.updatePersonal = (info) => {
+			personalInfoFactory.updatePersonalFact(info);
 		}
 	}
 ])
