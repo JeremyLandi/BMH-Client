@@ -12,12 +12,8 @@ function () {
 		},
 		setUser (user) {
 			currentUser = user;
-			console.log(`logged in as `, currentUser.data[0].CustUserName);
-			console.log(`currentUser: `, currentUser);
-			// console.log(`logged in as `, currentUser);
+			console.log(`currentUser:`, currentUser);
 		}
 	}
 }
-
-
 ]);

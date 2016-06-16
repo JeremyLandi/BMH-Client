@@ -11,9 +11,9 @@ BMH.config(['$routeProvider',
 			templateUrl: 'partials/login.html',
 			controller: 'LoginController'
 		})
-		.when('/main', {
+		.when('/main/', {
 			templateUrl: 'partials/main.html',
-			controller: 'MainController'
+			controller: 'MainCtrl'
 		})
     .when("/songs/:songId", {
       templateUrl: "partials/song-brief.html",

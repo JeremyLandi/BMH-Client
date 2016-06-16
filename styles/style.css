@@ -15,7 +15,7 @@ html {
 }
 body {
 	font-family: 'Open Sans', sans-serif;
-	background-image: url("https://lh6.googleusercontent.com/-cVLfKfUtG5I/VM1HblhKsxI/AAAAAAAAB7o/nvFh7wpIn7U/s1600/black-wood-wallpaper-wallpaper-1080p.jpg");
+	/*background-image: url("https://lh6.googleusercontent.com/-cVLfKfUtG5I/VM1HblhKsxI/AAAAAAAAB7o/nvFh7wpIn7U/s1600/black-wood-wallpaper-wallpaper-1080p.jpg");*/
     background-size: contain;
     font-size: .8em;
     font-weight: bold;
@@ -55,6 +55,7 @@ footer {
 /*.active {
 	background-color: rgba(34,34,34,.5);	
 }*/
+
 .song {
 	border: 2px solid rgb(204,204,255);
 	margin-bottom: 10px;
