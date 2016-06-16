@@ -1,4 +1,4 @@
-<div ng-controller="PersonalInfoCtrl">
+<div class="PersonalInfo" ng-controller="PersonalInfoCtrl">
   <div class="forms" ng-hide="checked">
     <div id="personal_information_region">
       <div class="row personal-info-pane item-pane-wrapper">
@@ -252,14 +252,14 @@
         </div>
         <div class="col-md-2 col-sm-6 f-input form-group no-padding">
           <h5>Gender:</h5>
-          <select class="form-control" id="Gender">
+          <select ng-model="currentCustomer.Gender" class="form-control" id="Gender">
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
         </div>
         <div class="col-md-2 col-sm-6 f-input form-group no-padding">
           <h5>Hair:</h5>
-          <select class="form-control" id="Hair">
+          <select ng-model="currentCustomer.Hair" class="form-control" id="Hair">
             <option></option>
             <option value="Black">Black</option>
             <option value="Brown">Brown</option>
@@ -274,7 +274,7 @@
         </div>
         <div class="col-md-2 col-sm-6 f-input form-group no-padding">
           <h5>Eye color:</h5>
-          <select class="form-control" id="EyeColor" name="EyeColor">
+          <select ng-model="currentCustomer.EyeColor" class="form-control" id="EyeColor" name="EyeColor">
             <option></option>
             <option value="Brown">Brown</option>
             <option value="Gray">Gray</option>
@@ -348,7 +348,7 @@
         </div>
         <div class="col-md-2 col-sm-6 f-input form-group no-padding">
           <h5>Weight (lbs):</h5>
-          <input ng-model="currentCustomer.Weight" class="form-control" id="Weight" name="Weight" min="0" step="0.01" type="number" value="">
+          <input ng-model="currentCustomer.Weight" class="form-control" id="Weight" name="Weight" min="0" step="0.01" type="text" value="">
         </div>
         <div class="col-md-2 col-sm-6 f-input form-group no-padding">
           <h5>Blood type:</h5>
@@ -367,8 +367,10 @@
         <hr>
         <div class="clearfix"></div>
         <div class="actions">
-          <a class="btn btn-link js-cancel" href="javascript:;">Cancel</a>
-          <button class="btn btn-success ladda-button" data-style="slide-up" name="button" type="submit"><span class="ladda-label">Save</span><span class="ladda-spinner"></span></button>
+          <a class="btn btn-link js-cancel" ng-click="checked = !checked" aria-label="Toggle ngshow">Cancel</a>
+          <button ng-click="updatePersonal(currentCustomer)" class="btn btn-success ladda-button" data-style="slide-up" name="button" type="submit">
+            <span class="ladda-label">Save</span><span class="ladda-spinner"></span>
+          </button>
         </div>
         <div class="clearfix"></div>
       </form>

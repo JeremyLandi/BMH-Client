@@ -1,6 +1,6 @@
 "use strict";
 
-BMH.factory('AuthFactory', [
+BMH.factory('authFactory', [
 
 function () {
 	

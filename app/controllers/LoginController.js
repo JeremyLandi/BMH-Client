@@ -4,7 +4,7 @@ BMH.controller('LoginController', [
 	'$http', 
 	'$scope',
 	'$location',
-	'AuthFactory',
+	'authFactory',
 
 	function ($http, $scope, $location, authFactory) {
 
@@ -17,22 +17,27 @@ BMH.controller('LoginController', [
 			  console.log(result)
 
 				result.me().done(function(data) {
+					console.log(data)
+
+					var fullName = data.name.split(" ")
 				    // POSTing resulting user info (new JSON stringified object) to database hooked to our API
 				    $http({
-				    	// designated API endpoint
 				    	url: "http://localhost:5000/api/Customer",
 				    	method: "POST",
 				    	data: JSON.stringify({
 				    		CustUserName: data.alias,
+				    		CustFirst: fullName[0],
+				    		CustLast: fullName[1],
 				    		CustCity: data.location,
-				    		Email: data.email,
+				    		CustEmail: data.email,
 				    		CreatedDate: new Date()
 				    	})
 				    }).then(
 				    response => {
-				    	let customer = response.data[0];
+				    	let customer = response.data;
 				    	authFactory.setUser(customer);
 				    	console.log("logged in", customer);
+				    	$location.path("/main");
 				    },
 				    response => {
 				    	console.log("new customer", response);
