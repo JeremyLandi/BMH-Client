@@ -8,6 +8,16 @@ BMH.controller('PersonalInfoCtrl', [
 	function($scope, authFactory, personalInfoFactory) {
         var cust = authFactory.getUser();
 		
+
+		// QR CODE	
+        $('#qrcode').qrcode({
+			render	: "canvas",
+			width: 128,
+			height: 128,
+					// *** THE TEXT LINQ NEEDS TO LINK TO ANOTHER PUBLIC VIEW
+			text: `http://localhost:8080/#/main/${cust.CustUserName}`
+		});	
+
 		console.log("cust", cust);
 		if (cust.BirthDate != null) {
 			console.log("cust", cust.BirthDate.split("/"));
@@ -18,29 +28,7 @@ BMH.controller('PersonalInfoCtrl', [
 			cust.date = dateConverter[1];
 		}
 		
-
 		$scope.currentCustomer = cust;
-		// $scope.currentCustomer = [
-		// 	CustFirst = cust.CustFirst,
-		// 	CustLast = cust.CustLast,
-		// 	CustUserName = cust.CustUserName,
-		// 	CustAddress = cust.CustAddress,
-		// 	CustCity = cust.CustCity,
-		// 	CustState = cust.CustState,
-		// 	CustPhone = cust.CustPhone,
-		// 	CustEmail = cust.CustEmail,
-		// 	BloodType = cust.BloodType,
-		// 	year =  dateConverter[2],
-		// 	month = dateConverter[0],
-		// 	date = dateConverter[1],
-		// 	Gender =  cust.Gender,
-		// 	Hair = cust.Hair,
-		// 	EyeColor =  cust.EyeColor,
-		// 	Height = cust.Height,
-		// 	Weight =  cust.Weight
-		// ];
-		
-		//DateTime.ParseExact(YourString, "dd/MM/yyyy");
 
 		$scope.updatePersonal = (info) => {
 			personalInfoFactory.updatePersonalFact(info);
