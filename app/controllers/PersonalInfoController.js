@@ -15,7 +15,8 @@ BMH.controller('PersonalInfoCtrl', [
 			width: 128,
 			height: 128,
 					// *** THE TEXT LINQ NEEDS TO LINK TO ANOTHER PUBLIC VIEW
-			text: `http://localhost:8080/#/main/${cust.CustUserName}`
+			//text: `http://localhost:8080/#/main/${cust.CustUserName}`
+			text: `http://google.com`
 		});	
 
 		console.log("cust", cust);
