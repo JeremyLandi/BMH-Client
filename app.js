@@ -1,10 +1,25 @@
 'use strict';
 
 let BMH = angular.module('BMH', [
-	'ngRoute'
+	'ngRoute',
+	// 'ngMaterial',
+	// 'ngMessages',
 ])
 
-BMH.config(['$routeProvider', 
+	let isAuth = (authFactory) => new Promise((resolve, reject) => {
+		let userToken = authFactory.getUserToken();
+
+		if (userToken) {
+			console.log("user authenticated");	
+			resolve();
+		}
+		else {
+			console.log("user is not authenticated");	
+			reject();
+		}
+	});
+
+BMH.config(['$routeProvider',
   function ($routeProvider) {
 	$routeProvider
 		.when('/', {
@@ -13,13 +28,13 @@ BMH.config(['$routeProvider',
 		})
 		.when('/main/', {
 			templateUrl: 'partials/main.html',
+			controller: 'MainCtrl',
+			// resolve: {isAuth}
+		})
+		.when('/main/:custUserName', {
+			templateUrl: 'partials/mainPublic.html',
 			controller: 'MainCtrl'
 		})
-    .when("/songs/:songId", {
-      templateUrl: "partials/song-brief.html",
-      controller: "SongDetailController",
-      // resolve: { isAuth }
-    })
 		.otherwise('/');
   }
 ]);
