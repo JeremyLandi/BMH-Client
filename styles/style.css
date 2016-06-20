@@ -34,6 +34,13 @@ select {
 label {
     font-size:1.2em; 
 }
+h3 {
+text-align: center;
+}
+
+.title {
+	color: black;
+}
 li {
 	list-style: none;
 }
@@ -48,6 +55,34 @@ footer {
 	background-color: rgba(200,200,200,.3);
 	box-shadow: -5px -5px 200px #667;
 	border: 1px outset rgba(0,0,0,.5);
+}
+.sectionContainer{
+	width: 80%;
+	margin: 0 auto;
+}
+.btnSpaceLft {
+	margin-left: 20px;
+}
+.card .card-title {
+	font-size: 1rem;
+}
+.switch {
+	margin-bottom: 20px;
+}
+
+.card.smOverride {
+	height: 170px;
+}
+
+input[type=text] {
+	font-size: .8rem;
+}
+.card .card-content, .card .card-reveal {
+	padding: 5px;
+}
+
+.noteSection{
+	margin-top: 10px;
 }
 .navbar {
 	background-color: rgba(34,34,34,.5);
@@ -221,7 +256,4 @@ LOGGIN
     margin-top: 0px !important;
     margin-bottom: 0px !important;
   }
-  h3 {
-    text-align: center;
-    line-height: 300%;
-  }
+ 

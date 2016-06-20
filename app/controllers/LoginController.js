@@ -14,7 +14,9 @@ BMH.controller('LoginController', [
 			OAuth.initialize('B-0gV1snXfTltFNgEUvICyOtbJg')
 
 			OAuth.popup('github').done(function(result) {
-			  console.log(result)
+			  console.log(result.access_token)
+
+			  authFactory.setUserToken(result.access_token);
 
 				result.me().done(function(data) {
 					console.log(data)

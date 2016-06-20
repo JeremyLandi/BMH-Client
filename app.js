@@ -2,20 +2,20 @@
 
 let BMH = angular.module('BMH', [
 	'ngRoute',
-	'ngMaterial',
-	'ngMessages',
+	// 'ngMaterial',
+	// 'ngMessages',
 ])
 
 	let isAuth = (authFactory) => new Promise((resolve, reject) => {
-		let user = authFactory.getUser();
-		
-		console.log("user", user);	
-		if (user == null) {
-			console.log("user", user);
-			return false;
+		let userToken = authFactory.getUserToken();
+
+		if (userToken) {
+			console.log("user authenticated");	
+			resolve();
 		}
 		else {
-			return true
+			console.log("user is not authenticated");	
+			reject();
 		}
 	});
 
@@ -25,23 +25,16 @@ BMH.config(['$routeProvider',
 		.when('/', {
 			templateUrl: 'partials/login.html',
 			controller: 'LoginController'
-			
 		})
 		.when('/main/', {
 			templateUrl: 'partials/main.html',
 			controller: 'MainCtrl',
-			resolve: {isAuth}
+			// resolve: {isAuth}
 		})
 		.when('/main/:custUserName', {
 			templateUrl: 'partials/mainPublic.html',
-			controller: 'MainCtrl',
-			resolve: {isAuth}
+			controller: 'MainCtrl'
 		})
-    .when("/songs/:songId", {
-      templateUrl: "partials/song-brief.html",
-      controller: "SongDetailController",
-      // resolve: { isAuth }
-    })
 		.otherwise('/');
   }
 ]);

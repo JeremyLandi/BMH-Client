@@ -1,0 +1,116 @@
+<div class="Allergy" ng-controller="AllergyCtrl">
+  <div class="sectionContainer">
+      <!-- <span><h3">Allergies</h3></span> -->
+
+ 
+      <span ng-click="addChoice(); create(currentAllergy)" class=" btn waves-effect waves-light blue col s12">
+        <i class="material-icons">add</i><h2">Allergies</h2>
+      </span>
+    <ul class="collection">
+
+      <div ng-repeat="currentAllergy in allergy">
+       
+        <div class="card">
+          <!-- <div class="row">
+            <div class="primary-content waves-effect waves-purple right activator col s12"><i class="material-icons">mode_edit</i></div>
+          </div> -->
+          <div class="card-content smOverride">
+            <!-- <li class="collection-item avatar"> -->
+              <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
+              
+              <div class="row">
+                <div class="primary-content waves-effect waves-purple right activator col s2 offset-s11"><i class="material-icons">mode_edit</i></div>
+                <div class="col s6">
+                  <span class="title">Allergy Name:</span>
+                  <p>{{currentAllergy.Name}}</p>
+                </div>
+                <div class="col s6">
+                  <span class="title">Reaction:</span>
+                  <p>{{currentAllergy.Reaction}}</p>
+                </div>
+              </div>  
+              <div class="row noteSection">
+                <div class="col s12">
+                  <span class="title">Notes:</span>
+                  <p>{{currentAllergy.Notes}}</p>
+                </div>
+              </div>
+
+              
+              
+            <!-- </li> -->
+          <!-- <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+            <p><a href="#">This is a link</a></p> -->
+          </div>
+
+
+          <div class="card-reveal">
+            <div class="row">
+              <form>
+                <!-- <li class="collection-item"> -->
+                  <!-- <img src="images/yuna.jpg" alt="" class="circle"> -->
+                  <!-- <i class="material-icons circle">folder</i> -->
+                <!-- <div class="row"> -->
+                  <div class="col s6">
+                    <span class="title">Allergy Name:</span>
+                    <input ng-model="currentAllergy.Name" type="text">
+                  </div>
+                  <div class="col s6">
+                    <span class="title">Reaction:</span>
+                    <input ng-model="currentAllergy.Reaction" type="text">
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                      <span class="title">Notes:</span>
+                      <input ng-model="currentAllergy.Notes" type="text">
+                    </div>
+                  </div>
+                <!-- </div> -->
+                
+                <div class="switch col s12">
+                  <label>
+                    <input type="checkbox">
+                    <span class="lever right"></span>
+                    View on Public Profile?
+                  </label>
+                </div>
+
+                <div class="col s3 offset-s3">
+                    <div ng-click="delete(currentAllergy.AllergyId)" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
+                  </div> 
+                  <div class="col s3">
+                    <div class="card-title btn-floating btn-medium waves-effect waves-light yellow"><i class="material-icons">clear</i></div>Cancle
+                  </div>  
+                  <div class="col s3">
+                    <div ng-click="save(currentAllergy)" class="btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
+                  </div>
+              </form>
+              
+                <!-- <div class="row">
+                  <div class="input-field col s6">
+                    <input ng-model="currentAllergy.Name" id="Name" type="text" class="validate" value="currentAllergy.Name">
+                    <label for="Name">Allergy Name: </label>
+                  </div>
+                  <div class="input-field col s6">
+                    <input ng-model="currentAllergy.Reaction" id="Reaction" type="text" class="validate" value="currentAllergy.Reaction">
+                    <label for="Reaction">Reaction: </label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea ng-model="currentAllergy.Notes" id="textarea1" class="materialize-textarea">{{currentAllergy.Notes}}</textarea>
+                    <label for="textarea1">Notes:</label>
+                  </div>
+                </div>
+                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span> -->
+            <!-- end of row -->
+            </div>
+          <!-- end of reveal -->
+          </div>
+        <!-- end of card div -->
+        </div>
+      <!-- end of ng-repeate -->
+      </div>
+    </ul>
+  </div>  
+<div> 
