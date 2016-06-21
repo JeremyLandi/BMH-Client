@@ -3,45 +3,92 @@
 BMH.controller('AllergyCtrl', [
 	'$scope',
 	'allergyFactory',
+	'authFactory',
+	'$route',
+	'$timeout',
+	'taskFactory',
 
-	function($scope, allergyFactory) {
+	function($scope, allergyFactory, authFactory, $route, $timeout, taskFactory) {
 
-		$scope.allergy = [];
-		let hideCreate = false;
+		$scope.allergyList = [];
+		$scope.allergyBeingAdded = [];
 
-		$scope.addChoice = () => {
-			console.log("new element created");
-			var newItemNo = $scope.allergy.length+1;
-    		$scope.allergy.unshift({'id':'choice'+newItemNo});
-		}
+		let allergyObj = {};
+
+		$scope.deactivate = () => {
+        	taskFactory.deactivate();
+        }
 
 		$scope.removeChoice = function() {
-			var lastItem = $scope.choices.length-1;
-			$scope.choices.splice(lastItem);
+		var lastItem = $scope.allergyBeingAdded.length-1;
+		$scope.allergyBeingAdded.splice(lastItem);
 		};
 
-		$scope.save = (profile) => {
-			console.log("save", profile);
-			allergyFactory.update(profile);
+		$scope.createBlank = () => {
+    		let cust = authFactory.getUser();
+    		// Adding user info to allergy
+			allergyObj = {
+				CustomerId: cust.CustomerId,
+				ShowOnPublicView: false,
+				CustUserName: cust.CustUserName
+			};
+			$scope.allergyBeingAdded.unshift(allergyObj);
+			taskFactory.collapsible();			
 		}
 
-		$scope.create = (profile) => {
-			console.log("create", profile)
-			allergyFactory.create(profile);
+		$scope.get = () => {
+			allergyFactory.getAllergy()
+	        .then(
+	        	allergyData => {
+	        		$scope.allergyList = allergyData.reverse();
+	        		taskFactory.collapsible()
+	        })
+		}
+		$scope.get();
+
+		$scope.update = (profile) => {
+			console.log("updateProfile", profile)
+			allergyFactory.update(profile)
+		.then( 
+			response => {
+				allergyFactory.getAllergy()
+			.then(
+        	allergyData => {
+        		$scope.allergy = allergyData.reverse();
+        		taskFactory.collapsible()
+	        	})
+			})
 		}
 
+        $scope.create = (allergy) => {
+    		//console.log("allergy",allergy)
+			allergyFactory.createAllergy(allergy)
+			.then( 
+				response => {
+				//console.log(response);
+				allergyFactory.getAllergy()
+				.then(
+	        	allergyData => {
+	        		$scope.allergyList = allergyData.reverse();
+	        		taskFactory.collapsible();
+	        });
+			})
+        }
+        
 		$scope.delete = (id) => {
 			console.log("delete", id);
-			allergyFactory.delete(id);
+			allergyFactory.delete(id)
+			.then( 
+				response => {
+				console.log(response);
+				allergyFactory.getAllergy()
+				.then(
+	        	allergyData => {
+	        		$scope.allergyList = allergyData.reverse();
+	        		taskFactory.collapsible();
+	        });
+				
+			})
 		}
-
-        allergyFactory.getAllergy()
-        .then(
-        	allergyData => {
-        		if (allergyData) {
-					hideCreate = true;
-				}
-        		$scope.allergy = allergyData
-        })
 	}
 ])
