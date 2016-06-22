@@ -2,22 +2,21 @@
 
 let BMH = angular.module('BMH', [
 	'ngRoute',
-	// 'ngMaterial',
-	// 'ngMessages',
+	'firebase',
 ])
 
-	let isAuth = (authFactory) => new Promise((resolve, reject) => {
-		let userToken = authFactory.getUserToken();
+let isAuth = (authFactory) => new Promise((resolve, reject) => {
+	let userToken = authFactory.getUserToken();
 
-		if (userToken) {
-			console.log("user authenticated");	
-			resolve();
-		}
-		else {
-			console.log("user is not authenticated");	
-			reject();
-		}
-	});
+	if (userToken) {
+		console.log("user authenticated");	
+		resolve();
+	}
+	else {
+		console.log("user is not authenticated");	
+		reject();
+	}
+});
 
 BMH.config(['$routeProvider',
   function ($routeProvider) {
@@ -33,7 +32,7 @@ BMH.config(['$routeProvider',
 		})
 		.when('/main/:custUserName', {
 			templateUrl: 'partials/mainPublic.html',
-			controller: 'MainCtrl'
+			controller: 'MainPublicCtrl'
 		})
 		.otherwise('/');
   }

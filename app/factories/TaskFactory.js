@@ -22,7 +22,7 @@ BMH.factory('taskFactory', [
       $(".collapsible-header").removeClass("active")
       $("li").removeClass("active")
       $(".collapsible-body").css("display", "none")
-    }, 250);
+    }, 500);
 
    return task; 
   }
