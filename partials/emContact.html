@@ -1,9 +1,9 @@
-<div class="Allergy" ng-controller="AllergyCtrl">
+<div class="EmContact" ng-controller="EmContactCtrl">
   <span ng-click="createBlank()" class=" btn waves-effect waves-light blue col s11 offset-s1">
-    <i class="material-icons">add</i><h2">Allergies</h2>
+    <i class="material-icons">add</i><h2">Emergency Contacts</h2>
   </span>
     <!-- CREATE NEW SECTION -->
-    <div ng-repeat="allergy in allergyBeingAdded">
+    <div ng-repeat="emContact in emContactBeingAdded">
       <ul class="collapsible popout" data-collapsible="accordion">
         <li ng-hide="!hideTrue">
           <div class="collapsible-header active">
@@ -11,15 +11,20 @@
               <span ng-show="$last" ng-click="removeChoice()" class="primary-content waves-effect waves-purple right col s1 remove"><i class="material-icons">delete</i></span>
               <span class="primary-content waves-effect waves-purple right col s1 offset-s9"><i class="material-icons">info</i></span>
               
-              <div class="col s6">
-                <span class="title">Allergy Name:</span>
-                <p>{{allergy.Name}}</p>
-                <input ng-hide="hideTrue" ng-model="allergy.Name" type="text">
+              <div class="col s4">
+                <span class="title">Contact Name:</span>
+                <p>{{emContact.EmContactName}}</p>
+                <input ng-hide="!hideTrue" ng-model="emContact.EmContactName" type="text">
               </div>
-              <div class="col s6">
-                <span class="title">Reaction:</span>
-                <p>{{allergy.Reaction}}</p>
-                <input ng-hide="hideTrue" ng-model="allergy.Reaction" type="text">
+              <div class="col s4">
+                <span class="title">Relationship:</span>
+                <p>{{emContact.Relationship}}</p>
+                <input ng-hide="!hideTrue" ng-model="emContact.Relationship" type="text">
+              </div>
+              <div class="col s4">
+                <span class="title">Number:</span>
+                <p>{{emContact.EmergencyContactPhone}}</p>
+                <input ng-hide="!hideTrue" ng-model="emContact.EmergencyContactPhone" type="text">
               </div>
             </div>  
           </div> 
@@ -29,29 +34,32 @@
               <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
               <div class="col s10">
                 <span class="title">Notes:</span>
-                <p>{{allergy.Notes}}</p>
-                <input ng-hide="hideTrue" ng-model="allergy.Notes" type="text">
+                <p>{{emContact.Notes}}</p>
+                <input ng-hide="!hideTrue" ng-model="emContact.Notes" type="text">
               </div>
             </div>
           </div>
         </li>
       </ul>
 
-      
       <div ng-hide="hideTrue" class="row sectionContainer">
         <form>
-          <div class="col s6">
-            <span class="title">Allergy Name:</span>
-            <input ng-model="allergy.Name" type="text">
+          <div class="col s4">
+            <span class="title">Contact Name:</span>
+            <input ng-model="emContact.EmContactName" type="text">
           </div>
-          <div class="col s6">
-            <span class="title">Reaction:</span>
-            <input ng-model="allergy.Reaction" type="text">
+          <div class="col s4">
+            <span class="title">Relationship:</span>
+            <input ng-model="emContact.Relationship" type="text">
+          </div>
+          <div class="col s4">
+            <span class="title">Number:</span>
+            <input ng-model="emContact.EmergencyContactPhone" type="text">
           </div>
           <div class="row">
             <div class="col s12">
               <span class="title">Notes:</span>
-              <input ng-model="allergy.Notes" type="text">
+              <input ng-model="emContact.Notes" type="text">
             </div>
           </div>
           <div class="switch col s12">
@@ -64,8 +72,8 @@
 
           <!-- Customer Info Section -->
           <div ng-hide="true">
-            <div ng-model="allergy.CustomerId"></div>
-            <div ng-model="allergy.CustUserName"></div>
+            <div ng-model="emContact.CustomerId"></div>
+            <div ng-model="emContact.CustUserName"></div>
           </div>  
 
           <div class="col s3 offset-s3">
@@ -75,7 +83,7 @@
             <div class="btn-floating btn-medium waves-effect waves-light yellow"><i ng-click="hideTrue = !hideTrue; deactivate();" class="material-icons">clear</i></div><br>Cancle
           </div>  
           <div class="col s3">
-            <div ng-click="hideTrue = !hideTrue; create(allergy); removeChoice(); deactivate()" class="card-title btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
+            <div ng-click="hideTrue = !hideTrue; create(emContact); removeChoice(); deactivate()" class="card-title btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
           </div>
         </form>
       </div>  
@@ -83,24 +91,29 @@
     </div>
     <!-- END OF NG-REPEATE -->
   <!-- END OF NEW SECTION     -->
-
     
-    <div ng-repeat="allergy in allergyList">
+    <div ng-repeat="emContact in emContactList">
       <ul class="collapsible popout" data-collapsible="accordion">
         <li ng-hide="hideTrue">
           <div class="collapsible-header">
             <div class="row">
               <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
-              <div class="col s6">
-                <span class="title">Allergy Name:</span>
-                <p>{{allergy.Name}}</p>
-                <input ng-hide="!hideTrue" ng-model="allergy.Name" type="text">
+               <div class="col s4">
+                <span class="title">Contact Name:</span>
+                <p>{{emContact.EmContactName}}</p>
+                <input ng-hide="!hideTrue" ng-model="emContact.EmContactName" type="text">
               </div>
-              <div class="col s6">
-                <span class="title">Reaction:</span>
-                <p>{{allergy.Reaction}}</p>
-                <input ng-hide="!hideTrue" ng-model="allergy.Name" type="text">
+              <div class="col s4">
+                <span class="title">Relationship:</span>
+                <p>{{emContact.Relationship}}</p>
+                <input ng-hide="!hideTrue" ng-model="emContact.Relationship" type="text">
               </div>
+              <div class="col s4">
+                <span class="title">Number:</span>
+                <p>{{emContact.EmergencyContactPhone}}</p>
+                <input ng-hide="!hideTrue" ng-model="emContact.EmergencyContactPhone" type="text">
+              </div>
+
             </div>  
           </div> 
 
@@ -109,8 +122,8 @@
               <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
               <div class="col s10">
                 <span class="title">Notes:</span>
-                <p>{{allergy.Notes}}</p>
-                <input ng-hide="!hideTrue" ng-model="allergy.Name" type="text">
+                <p>{{emContact.Notes}}</p>
+                <input ng-hide="!hideTrue" ng-model="emContact.EmContactName" type="text">
               </div>
             </div>
           </div>
@@ -120,18 +133,22 @@
       <!-- EDIT SECTION -->
       <div ng-hide="!hideTrue" class="row sectionContainer">
         <form>
-          <div class="col s6">
-            <span class="title">Allergy Name:</span>
-            <input ng-model="allergy.Name" type="text">
+          <div class="col s4">
+            <span class="title">Contact Name:</span>
+            <input ng-model="emContact.EmContactName" type="text">
           </div>
-          <div class="col s6">
-            <span class="title">Reaction:</span>
-            <input ng-model="allergy.Reaction" type="text">
+          <div class="col s4">
+            <span class="title">Relationship:</span>
+            <input ng-model="emContact.Relationship" type="text">
+          </div>
+           <div class="col s4">
+            <span class="title">Number:</span>
+            <input ng-model="emContact.EmergencyContactPhone" type="text">
           </div>
           <div class="row">
             <div class="col s12">
               <span class="title">Notes:</span>
-              <input ng-model="allergy.Notes" type="text">
+              <input ng-model="emContact.Notes" type="text">
             </div>
           </div>
           <div class="switch col s12">
@@ -144,18 +161,18 @@
 
           <!-- Customer Info Section -->
           <div ng-hide="true">
-            <div ng-model="allergy.CustomerId"></div>
-            <div ng-model="allergy.CustUserName"></div>
+            <div ng-model="emContact.CustomerId"></div>
+            <div ng-model="emContact.CustUserName"></div>
           </div>  
 
           <div class="col s3 offset-s3">
-            <div ng-click="delete(allergy.AllergyId)" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
+            <div ng-click="delete(emContact.EmContactId)" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
           </div> 
           <div class="col s3">
             <div class="btn-floating btn-medium waves-effect waves-light yellow"><i ng-click="hideTrue = !hideTrue; deactivate()" class="material-icons">clear</i></div><br>Cancle
           </div> 
           <div class="col s3">
-            <div ng-click="hideTrue = !hideTrue; update(allergy); removeChoice(); deactivate()" class="card-title btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
+            <div ng-click="hideTrue = !hideTrue; update(emContact); removeChoice(); deactivate()" class="card-title btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
           </div> 
         </form>
       </div>  

@@ -1,0 +1,263 @@
+<div class="Insurance" ng-controller="InsuranceCtrl">
+  <span ng-click="createBlank()" class=" btn waves-effect waves-light blue col s11 offset-s1">
+    <i class="material-icons">add</i><h2">Insurance</h2>
+  </span>
+    <!-- CREATE NEW SECTION -->
+    <div ng-repeat="insurance in insuranceBeingAdded">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li ng-hide="!hideTrue">
+          <div class="collapsible-header active">
+            <div class="row">
+              <span ng-show="$last" ng-click="removeChoice()" class="primary-content waves-effect waves-purple right col s1 remove"><i class="material-icons">delete</i></span>
+              <span class="primary-content waves-effect waves-purple right col s1 offset-s9"><i class="material-icons">info</i></span>
+              
+              <div class="col s6">
+                <span class="title">Insurance Provider:</span>
+                <p>{{insurance.InsuranceProvider}}</p>
+                <input ng-hide="hideTrue" ng-model="insurance.InsuranceProvider" type="text">
+              </div>
+              <div class="col s6">
+                <span class="title">Phone:</span>
+                <p>{{insurance.Phone}}</p>
+                <input ng-hide="hideTrue" ng-model="insurance.Phone" type="text">
+              </div>
+            </div>  
+          </div> 
+
+          <div class="collapsible-body">
+            <div class="row noteSection">
+              <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
+              <div class="col s3">
+                <span class="title">ID Number:</span>
+                <p>{{insurance.IdNumber}}</p>
+                <input ng-hide="hideTrue" ng-model="insurance.IdNumber" type="text">
+              </div>
+              <div class="col s3">
+                <span class="title">Group Number:</span>
+                <p>{{insurance.GroupNumber}}</p>
+                <input ng-hide="hideTrue" ng-model="insurance.GroupNumber" type="text">
+              </div>
+              <div class="col s3">
+                <span class="title">BIN:</span>
+                <p>{{insurance.BIN}}</p>
+                <input ng-hide="hideTrue" ng-model="insurance.BIN" type="text">
+              </div>
+              <div class="col s3">
+                <span class="title">Deducatable:</span>
+                <p>{{insurance.Deducatable}}</p>
+                <input ng-hide="hideTrue" ng-model="insurance.Deducatable" type="text">
+              </div>
+              <div class="col s10">
+                <span class="title">Notes:</span>
+                <p>{{insurance.Notes}}</p>
+                <input ng-hide="hideTrue" ng-model="insurance.Notes" type="text">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      
+      <div ng-hide="hideTrue" class="row sectionContainer">
+        <form>
+          <div class="col s6">
+            <span class="title">Insurance Provider:</span>
+            <input ng-model="insurance.InsuranceProvider" type="text">
+          </div>
+          <div class="col s6">
+            <span class="title">Phone:</span>
+            <input ng-model="insurance.Phone" type="text">
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <span class="title">Notes:</span>
+              <input ng-model="insurance.Notes" type="text">
+            </div>
+          </div>
+          <div class="switch col s12">
+            <label>
+              <input checked="checked" type="checkbox" value="{{insurance.ShowOnPublicView}}" ng-model="insurance.ShowOnPublicView" ng-true-value="'True'" ng-false-value="'False'"/>
+              <span class="lever right"></span>
+              View on Public Profile?
+            </label>
+            <!-- <p>
+              <input checked="checked" type="checkbox" value="{{insurance.ShowOnPublicView}}" ng-model="insurance.ShowOnPublicView" ng-true-value="'True'" ng-false-value="'False'" ng-click="clicker(insurance.ShowOnPublicView)" />
+              <label for="test6">Yellow</label>
+            </p> -->
+          </div>
+
+          <!-- Customer Info Section -->
+          <div ng-hide="true">
+            <div ng-model="insurance.CustomerId"></div>
+            <div ng-model="insurance.CustUserName"></div>
+          </div>  
+
+          <div class="col s3 offset-s3">
+            <div ng-click="removeChoice()" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
+          </div> 
+          <div class="col s3">
+            <div class="btn-floating btn-medium waves-effect waves-light yellow"><i ng-click="hideTrue = !hideTrue; deactivate();" class="material-icons">clear</i></div><br>Cancle
+          </div>  
+          <div class="col s3">
+            <div ng-click="hideTrue = !hideTrue; create(insurance); removeChoice(); deactivate()" class="card-title btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
+          </div>
+        </form>
+      </div>  
+      <!-- END OF EDIT SECTION -->        
+    </div>
+    <!-- END OF NG-REPEATE -->
+  <!-- END OF NEW SECTION     -->
+
+    
+    <div ng-repeat="insurance in insuranceList">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li ng-hide="hideTrue">
+          <div class="collapsible-header">
+            <div class="row">
+              <span class="primary-content waves-effect waves-purple right col s1 offset-s11 offset-s10"><i class="material-icons">info</i></span>
+              <div class="col s6">
+                <span class="title">Insurance Provider:</span>
+                <p>{{insurance.InsuranceProvider}}</p>
+                <input ng-hide="!hideTrue" ng-model="insurance.InsuranceProvider" type="text">
+              </div>
+              <div class="col s6">
+                <span class="title">Phone:</span>
+                <p>{{insurance.Phone}}</p>
+                <input ng-hide="!hideTrue" ng-model="insurance.InsuranceProvider" type="text">
+              </div>
+            </div>  
+          </div> 
+
+          <div class="collapsible-body">
+            <div class="row noteSection">
+              <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
+              <div class="col s3">
+                <span class="title">ID Number:</span>
+                <p>{{insurance.IdNumber}}</p>
+                <input ng-hide="!hideTrue" ng-model="insurance.IdNumber" type="text">
+              </div>
+              <div class="col s3">
+                <span class="title">Group Number:</span>
+                <p>{{insurance.GroupNumber}}</p>
+                <input ng-hide="!hideTrue" ng-model="insurance.GroupNumber" type="text">
+              </div>
+              <div class="col s3">
+                <span class="title">BIN:</span>
+                <p>{{insurance.BIN}}</p>
+                <input ng-hide="!hideTrue" ng-model="insurance.BIN" type="text">
+              </div>
+              <div class="col s3">
+                <span class="title">Deducatable:</span>
+                <p>{{insurance.Deducatable}}</p>
+                <input ng-hide="!hideTrue" ng-model="insurance.Deducatable" type="text">
+              </div>
+              <div class="col s10">
+                <span class="title">Notes:</span>
+                <p>{{insurance.Notes}}</p>
+                <input ng-hide="!hideTrue" ng-model="insurance.InsuranceProvider" type="text">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+     
+      <!-- EDIT SECTION -->
+      <div ng-hide="!hideTrue" class="row sectionContainer">
+        <form>
+          <div class="col s6">
+            <span class="title">Insurance Provider:</span>
+            <input ng-model="insurance.InsuranceProvider" type="text">
+          </div>
+          <div class="col s6">
+            <span class="title">Phone:</span>
+            <input ng-model="insurance.Phone" type="text">
+          </div>
+          <div class="col s3">
+            <span class="title">ID Number:</span>
+            <input ng-model="insurance.IdNumber" type="text">
+          </div>
+          <div class="col s3">
+            <span class="title">Group Number:</span>
+            <input ng-model="insurance.GroupNumber" type="text">
+          </div>
+          <div class="col s3">
+            <span class="title">BIN:</span>
+            <input ng-model="insurance.BIN" type="text">
+          </div>
+          <div class="col s3">
+            <span class="title">Deducatable:</span>
+            <input ng-model="insurance.Deducatable" type="text">
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <span class="title">Notes:</span>
+              <input ng-model="insurance.Notes" type="text">
+            </div>
+          </div>
+          <div  class="switch col s12">
+            
+       <!--      <div>
+              <label for="basicCheck">Basic checkbox:</label>
+              <input id="basicCheck" type="checkbox" ng-model="basicCheckValue" />
+              <span class="valueItems"><strong>Value:</strong> {{insurance.InsuranceId}}</span><br />
+
+              <label for="{{insurance.InsuranceId}}">Checkbox with custom values:</label>
+              <input checked="checked" id="{{insurance.InsuranceId}}" type="checkbox" ng-model="insurance.InsuranceId"
+                     ng-true-value="right" ng-false-value="wrong"/>
+              <span class="valueItems"><strong>Value:</strong> {{insurance.InsuranceId}}</span>
+            </div> -->
+            <p>
+              <input type="checkbox" ng-model="insurance.ShowOnPublicView" ng-true-value="'true'" ng-false-value="'false'"/>
+              <label for="{{insurance.InsuranceId}}">blue</label>
+            </p>
+
+            <!-- <label>
+              <input type="checkbox" ng-model="insurance.ShowOnPublicView"/>
+            </label>
+            <p>{{insurance.ShowOnPublicView}}</p>
+ -->
+            <!-- <label>
+              <input type="checkbox" ng-model="insurance.ShowOnPublicView" ng-true-value="'true'" ng-false-value="'false'"/>
+            </label>
+            <p>{{insurance.ShowOnPublicView}}</p> -->
+            
+         <!--    <label>
+              <input type="radio" name="chickenEgg" value="egg" ng-model="insurance.ShowOnPublicView">
+                Egg
+            </label>
+
+            <label>
+              <input type="radio" name="chickenEgg" value="insurance.ShowOnPublicView" ng-model="insurance.ShowOnPublicView">
+                Egg
+            </label> -->
+
+           <!--  <label>
+              <input type="checkbox" value="{{insurance.ShowOnPublicView}}" ng-model="insurance.ShowOnPublicView" ng-true-value="'True'" ng-false-value="'False'"/>
+              <span class="lever right"></span>
+              View on Public Profile?
+            </label> -->
+          </div>
+
+          <!-- Customer Info Section -->
+          <div ng-hide="true">
+            <div ng-model="insurance.CustomerId"></div>
+            <div ng-model="insurance.CustUserName"></div>
+          </div>  
+
+          <div class="col s3 offset-s3">
+            <div ng-click="delete(insurance.InsuranceId)" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
+          </div> 
+          <div class="col s3">
+            <div class="btn-floating btn-medium waves-effect waves-light yellow"><i ng-click="hideTrue = !hideTrue; deactivate()" class="material-icons">clear</i></div><br>Cancle
+          </div> 
+          <div class="col s3">
+            <div ng-click="hideTrue = !hideTrue; update(insurance); removeChoice(); deactivate()" class="card-title btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
+          </div> 
+        </form>
+      </div>  
+      <!-- END OF EDIT SECTION -->        
+    </div>
+    <!-- END OF NG-REPEATE -->
+  <!-- END OF EDIT SECTION -->
+  </div>  
+</div> 

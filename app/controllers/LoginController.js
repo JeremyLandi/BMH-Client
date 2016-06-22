@@ -6,7 +6,43 @@ BMH.controller('LoginController', [
 	'$location',
 	'authFactory',
 
+
 	function ($http, $scope, $location, authFactory) {
+
+		let newCust = {};
+
+		$scope.register = function(customer) {
+            const email = customer.email;
+            const password = customer.password;
+            const CustUserName = customer.CustUserName   
+            authFactory.createUser(email, password, CustUserName)
+            .then(
+                () => authFactory.loginUser(customer.email, customer.password, customer.CustUserName),
+                (error) => console.log("could not register customer")
+            ).then(
+                (data) => { 
+                	newCust.CreatedDate = new Date();
+                	newCust.CustUserName = customer.CustUserName
+                	newCust.CustEmail = customer.email
+
+                	authFactory.createProfile(newCust), 
+                    $location.path("/main");    
+                    console.log("successfully registered")
+            },
+            (error) => console.log("could not authFactory customer")
+            )
+        }
+        
+        $scope.login = function(customer) {
+            authFactory.loginUser(customer.email, customer.password, customer.CustUserName)
+            .then(
+                () => {
+                    $location.path("/main");        
+                    console.log("successfully logged in");
+                },
+                (error) => console.log("could not authFactory customer")
+            );
+        }
 
 		// main OAuth function
 		$scope.githubOauth = function () {
@@ -51,8 +87,6 @@ BMH.controller('LoginController', [
 				    	if (response.status === 409) {
 				    		$http
 				    			.get(`http://localhost:5000/api/Customer?CustUserName=${customerAlias}`)
-				    			// .get(`http://localhost:5000/api/Customer?CustomerName=${customerAlias.toString()}`)
-				    			// .get(`http://localhost:5000/api/Customer?CustomerName=${}`)
 				    			.then(
 				    				response => {
 				    					let customer = response.data[0];
@@ -72,4 +106,3 @@ BMH.controller('LoginController', [
 		};
 	}
 ]);
-
