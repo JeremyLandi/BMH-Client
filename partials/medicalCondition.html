@@ -1,0 +1,147 @@
+<div class="MedicalCondition" ng-controller="MedicalConditionCtrl">
+  <span ng-click="createBlank()" class=" btn waves-effect waves-light blue col s11 offset-s1">
+    <i class="material-icons">add</i><h2">Medical Conditions</h2>
+  </span>
+    <!-- CREATE NEW SECTION -->
+    <div ng-repeat="medicalCondition in medicalConditionBeingAdded">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li ng-hide="!hideTrue">
+          <div class="collapsible-header active">
+            <div class="row">
+              <span ng-show="$last" ng-click="removeChoice()" class="primary-content waves-effect waves-purple right col s1 remove"><i class="material-icons">delete</i></span>
+              <span class="primary-content waves-effect waves-purple right col s1 offset-s9"><i class="material-icons">info</i></span>
+              
+              <div class="col s6">
+                <span class="title">Medical Condition:</span>
+                <p>{{medicalCondition.MedicalConditionName}}</p>
+                <input ng-hide="hideTrue" ng-model="medicalCondition.MedicalConditionName" type="text">
+              </div>
+            </div>  
+          </div> 
+                
+          <div class="collapsible-body">
+            <div class="row noteSection">
+              <span ng-click="hideTrue = !hideTrue; change(medicalCondition.ShowOnPublicView)" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
+              <div class="col s10">
+                <span class="title">Description:</span>
+                <p>{{medicalCondition.Description}}</p>
+                <input ng-hide="hideTrue" ng-model="medicalCondition.Description" type="text">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      
+      <div ng-hide="hideTrue" class="row sectionContainer">
+        <form>
+          <div class="col s6">
+            <span class="title">Medical Condition:</span>
+            <input ng-model="medicalCondition.MedicalConditionName" type="text">
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <span class="title">Description:</span>
+              <input ng-model="medicalCondition.Description" type="text">
+            </div>
+          </div>
+          <div class="switch col s12">
+            <label>
+              <input ng-click="change(medicalCondition.ShowOnPublicView)" ng-checked="medicalCondition.ShowOnPublicView==true" type="checkbox" ng-model="medicalCondition.ShowOnPublicView"/>
+              <span class="lever right"></span>
+              View on Public Profile?
+            </label>
+          </div>
+
+          <!-- Customer Info Section -->
+          <div ng-hide="true">
+            <div ng-model="medicalCondition.CustomerId"></div>
+            <div ng-model="medicalCondition.CustUserMedicalConditionName"></div>
+          </div>  
+
+          <div class="col s3 offset-s3">
+            <div ng-click="removeChoice()" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
+          </div> 
+          <div class="col s3">
+            <div class="btn-floating btn-medium waves-effect waves-light yellow"><i ng-click="hideTrue = !hideTrue; deactivate();" class="material-icons">clear</i></div><br>Cancle
+          </div>  
+          <div class="col s3">
+            <div ng-click="hideTrue = !hideTrue; create(medicalCondition); removeChoice(); deactivate()" class="card-title btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
+          </div>
+        </form>
+      </div>  
+      <!-- END OF EDIT SECTION -->        
+    </div>
+    <!-- END OF NG-REPEATE -->
+  <!-- END OF NEW SECTION     -->
+
+    
+    <div ng-repeat="medicalCondition in medicalConditionList">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li ng-hide="hideTrue">
+          <div class="collapsible-header">
+            <div class="row">
+              <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
+              <div class="col s6">
+                <span class="title">Medical Condition:</span>
+                <p>{{medicalCondition.MedicalConditionName}}</p>
+                <input ng-hide="!hideTrue" ng-model="medicalCondition.MedicalConditionName" type="text">
+              </div>
+            </div>  
+          </div> 
+
+          <div class="collapsible-body">
+            <div class="row noteSection">
+              <span ng-click="hideTrue = !hideTrue; change(medicalCondition.ShowOnPublicView)" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
+              <div class="col s10">
+                <span class="title">Description:</span>
+                <p>{{medicalCondition.Description}}</p>
+                <input ng-hide="!hideTrue" ng-model="medicalCondition.MedicalConditionName" type="text">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+     
+      <!-- EDIT SECTION -->
+      <div ng-hide="!hideTrue" class="row sectionContainer">
+        <form>
+          <div class="col s6">
+            <span class="title">Medical Condition:</span>
+            <input ng-model="medicalCondition.MedicalConditionName" type="text">
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <span class="title">Description:</span>
+              <input ng-model="medicalCondition.Description" type="text">
+            </div>
+          </div>
+          <div  class="switch col s12">
+            <label>
+              <input ng-click="change(medicalCondition.ShowOnPublicView)" ng-checked="medicalCondition.ShowOnPublicView==true" type="checkbox" ng-model="medicalCondition.ShowOnPublicView"/>
+              <span class="lever right"></span>
+              View on Public Profile?
+            </label>
+          </div>
+
+          <!-- Customer Info Section -->
+          <div ng-hide="true">
+            <div ng-model="medicalCondition.CustomerId"></div>
+            <div ng-model="medicalCondition.CustUserMedicalConditionName"></div>
+          </div>  
+
+          <div class="col s3 offset-s3">
+            <div ng-click="delete(medicalCondition.MedicalConditionId)" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
+          </div> 
+          <div class="col s3">
+            <div class="btn-floating btn-medium waves-effect waves-light yellow"><i ng-click="hideTrue = !hideTrue; deactivate()" class="material-icons">clear</i></div><br>Cancle
+          </div> 
+          <div class="col s3">
+            <div ng-click="hideTrue = !hideTrue; update(medicalCondition); removeChoice(); deactivate()" class="card-title btn-floating btn-medium waves-effect waves-light green"><i class="material-icons">save</i></div><br>Save
+          </div> 
+        </form>
+      </div>  
+      <!-- END OF EDIT SECTION -->        
+    </div>
+    <!-- END OF NG-REPEATE -->
+  </div>  
+</div> 

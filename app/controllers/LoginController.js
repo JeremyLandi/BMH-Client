@@ -6,7 +6,6 @@ BMH.controller('LoginController', [
 	'$location',
 	'authFactory',
 
-
 	function ($http, $scope, $location, authFactory) {
 
 		let newCust = {};

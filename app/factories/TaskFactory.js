@@ -10,7 +10,6 @@ BMH.factory('taskFactory', [
     //makes card collapsible in dynamic environment
     task.collapsible = (element, attrs) => { 
       $timeout(function () { 
-        console.log("collapsible");
         $('.collapsible').collapsible({
           accordion : false 
         });
