@@ -13,7 +13,7 @@ BMH.factory("physicianFactory", [
 
 		physician.getPhysician = () => {
 			let cust = authFactory.getUser();
-			console.log("cust", cust.CustomerId);
+			//console.log("cust", cust);
 			let token = authFactory.getUserToken();
 			return $q((resolve, reject) => {
 				$http.
@@ -30,13 +30,13 @@ BMH.factory("physicianFactory", [
 		}
 
 		physician.createPhysician = (profile) => {
-			console.log("profile", profile);
+			//console.log("profile", profile);
 			return $q((resolve, reject) => {
 				$http.
 					post(`http://localhost:5000/api/Physician`, JSON.stringify(profile))
 			.success(
 				custPhysician => {
-					console.log("newPhysician created", custPhysician);
+					//console.log("newPhysician created", custPhysician);
 					resolve(custPhysician);
 				},
 				error => {
@@ -46,7 +46,7 @@ BMH.factory("physicianFactory", [
 		}
 
 		physician.update = (profile) => {
-			console.log("profile", profile);
+			//console.log("profile", profile);
 			return $q((resolve, reject) => {
 				$http.
 					put(`http://localhost:5000/api/Physician/${profile.PhysicianId}`, JSON.stringify(profile))
@@ -65,6 +65,5 @@ BMH.factory("physicianFactory", [
 		return $http
 			.delete(`http://localhost:5000/api/Physician/${id}`)	
 		}
-
 	return physician;
 }])
