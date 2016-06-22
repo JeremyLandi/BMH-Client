@@ -36,8 +36,9 @@ BMH.controller('LoginController', [
             authFactory.loginUser(customer.email, customer.password, customer.CustUserName)
             .then(
                 () => {
-                    $location.path("/main");        
-                    console.log("successfully logged in");
+        			//console.log("customer", customer);
+                         
+                    //console.log("successfully logged in");
                 },
                 (error) => console.log("could not authFactory customer")
             );

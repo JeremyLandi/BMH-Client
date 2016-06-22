@@ -32,7 +32,7 @@ BMH.controller('PhysicianCtrl', [
 
 		$scope.createBlank = () => {
     		let cust = authFactory.getUser();
-    		console.log("cust", cust);
+    		//console.log("cust", cust);
     		// Adding user info to physician
 			physicianObj = {
 				CustomerId: cust.CustomerId,
@@ -47,7 +47,8 @@ BMH.controller('PhysicianCtrl', [
 			physicianFactory.getPhysician()
 	        .then(
 	        	physicianData => {
-	        		$scope.physicianList = physicianData.reverse();
+	        		//console.log("physicianData", physicianData);
+	        		$scope.physicianList = physicianData
 	        		taskFactory.collapsible()
 	        })
 		}
@@ -56,7 +57,7 @@ BMH.controller('PhysicianCtrl', [
 		$scope.update = (profile) => {
 			let cust = authFactory.getUser();
 			profile.ShowOnPublicView = switchVal
-			console.log("profile", profile);
+			//console.log("profile", profile);
 			profile.CustUserName = cust.CustUserName
 			physicianFactory.update(profile)
 			.then( 

@@ -13,13 +13,13 @@ function ($q, $http, $location) {
 	let currentUser = null;
 	let currentUserToken = null;
 
-
 	Authenticate.getUser = () => {
+		console.log("currentUser", currentUser);
 		return currentUser;
 	},
 	Authenticate.setUser = (user) => {
 		currentUser = user;
-		// console.log(`currentUser:`, currentUser);
+		//console.log(`currentUser:`, currentUser);
 	},
 	Authenticate.getUserToken = () => {
 		return currentUserToken;
@@ -30,7 +30,6 @@ function ($q, $http, $location) {
 
     Authenticate.isAuthenticated = () => {
         let authData = firebaseRef.getAuth();
-        // console.log(authData);
         if (!authData) {
             return false;
         } else {
@@ -46,15 +45,13 @@ function ($q, $http, $location) {
                 custName: CustUserName               
             }, function(error, userData) {
                 if (error) {
-                    // console.log("Error creating user:", error);                    
+                    console.log("Error creating user:", error);                    
                 } else {
                     // console.log(user);
-                    // console.log("Successfully created user account with uid:", userData.uid);
-                    
+                    //console.log("Successfully created user account with uid:", userData.uid);
                     return resolve(userData);    
                 }
             })
-            
         });
     }
 
@@ -71,23 +68,22 @@ function ($q, $http, $location) {
                 password: pass
             }, function(error, authData) {
                 if (error) {
-                    // console.log("Login Failed!", error);
+                    console.log("Login Failed!", error);
                 } else {
                 	$http
 		    			.get(`http://localhost:5000/api/Customer?CustUserName=${CustUserName}`)
 		    			.then(
 		    				response => {
-		    					console.log("response", response);
+		    					//console.log("response", response);
 		    					let customer = response.data[0];
-		    					// console.log("Customer already exists: ", customer);
+		    					Authenticate.setUserToken(authData.token)
 		    					Authenticate.setUser(customer)
-		    					$location.path("/main");
+		    					$location.path("/main");  
 		    				},
 		    				response => console.log("Could not find that Customer", response)
 		    			)
-                    // console.log("Authenticated Successfully with payload", authData);
-                    Authenticate.setUserToken(authData.token)
-                    currentUser = authData;
+                    console.log("Authenticated Successfully with payload", authData);
+                    
                     return resolve(authData);
                 }
             },
@@ -96,9 +92,7 @@ function ($q, $http, $location) {
             });
         });
     }
-
     Authenticate.logoutUser = () => firebaseRef.unauth();
-    // console.log("user logged out");
+    console.log("user logged out");
     return Authenticate;
-}
-]);
+}]);
