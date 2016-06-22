@@ -19,7 +19,7 @@ BMH.factory("allergyFactory", [
 					get(`http://localhost:5000/api/Allergy?id=${cust.CustomerId}&token=${token}`)
 			.success(
 				custAllergies => {
-					console.log("custAllergies", custAllergies);
+					// console.log("custAllergies", custAllergies);
 					resolve(custAllergies);
 				},
 				error => {
@@ -29,13 +29,13 @@ BMH.factory("allergyFactory", [
 		}
 
 		allergy.createAllergy = (profile) => {
-			console.log("profile", profile);
+			// console.log("profile", profile);
 			return $q((resolve, reject) => {
 				$http.
 					post(`http://localhost:5000/api/Allergy`, JSON.stringify(profile))
 			.success(
 				custAllergies => {
-					console.log("newAllergy created", custAllergies);
+					// console.log("newAllergy created", custAllergies);
 					resolve(custAllergies);
 				},
 				error => {
@@ -45,13 +45,13 @@ BMH.factory("allergyFactory", [
 		}
 
 		allergy.update = (profile) => {
-			console.log("profile", profile);
+			// console.log("profile", profile);
 			return $q((resolve, reject) => {
 				$http.
 					put(`http://localhost:5000/api/Allergy/${profile.AllergyId}`, JSON.stringify(profile))
 			.success(
 				custAllergies => {
-					console.log("Allergy Updated", custAllergies);
+					// console.log("Allergy Updated", custAllergies);
 					resolve(custAllergies);
 				},
 				error => {

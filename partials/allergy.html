@@ -23,10 +23,10 @@
               </div>
             </div>  
           </div> 
-
+          
           <div class="collapsible-body">
             <div class="row noteSection">
-              <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
+              <span ng-click="hideTrue = !hideTrue; change(allergy.ShowOnPublicView)" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
               <div class="col s10">
                 <span class="title">Notes:</span>
                 <p>{{allergy.Notes}}</p>
@@ -36,7 +36,6 @@
           </div>
         </li>
       </ul>
-
       
       <div ng-hide="hideTrue" class="row sectionContainer">
         <form>
@@ -54,9 +53,9 @@
               <input ng-model="allergy.Notes" type="text">
             </div>
           </div>
-          <div class="switch col s12">
+          <div  class="switch col s12">
             <label>
-              <input type="checkbox">
+              <input ng-click="change(allergy.ShowOnPublicView)" ng-checked="allergy.ShowOnPublicView==true" type="checkbox" ng-model="allergy.ShowOnPublicView"/>
               <span class="lever right"></span>
               View on Public Profile?
             </label>
@@ -106,7 +105,7 @@
 
           <div class="collapsible-body">
             <div class="row noteSection">
-              <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
+              <span ng-click="hideTrue = !hideTrue; change(allergy.ShowOnPublicView)" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
               <div class="col s10">
                 <span class="title">Notes:</span>
                 <p>{{allergy.Notes}}</p>
@@ -134,9 +133,9 @@
               <input ng-model="allergy.Notes" type="text">
             </div>
           </div>
-          <div class="switch col s12">
+          <div  class="switch col s12">
             <label>
-              <input type="checkbox">
+              <input ng-click="change(allergy.ShowOnPublicView)" ng-checked="allergy.ShowOnPublicView==true" type="checkbox" ng-model="allergy.ShowOnPublicView"/>
               <span class="lever right"></span>
               View on Public Profile?
             </label>

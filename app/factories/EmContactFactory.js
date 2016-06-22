@@ -19,7 +19,7 @@ BMH.factory("emContactFactory", [
 					get(`http://localhost:5000/api/EmContact?id=${cust.CustomerId}&token=${token}`)
 			.success(
 				custEmContact => {
-					console.log("custEmContact", custEmContact);
+					// console.log("custEmContact", custEmContact);
 					resolve(custEmContact);
 				},
 				error => {
@@ -29,13 +29,13 @@ BMH.factory("emContactFactory", [
 		}
 
 		emContact.createEmContact = (profile) => {
-			console.log("profile", profile);
+			// console.log("profile", profile);
 			return $q((resolve, reject) => {
 				$http.
 					post(`http://localhost:5000/api/EmContact`, JSON.stringify(profile))
 			.success(
 				custEmContact => {
-					console.log("newEmContact created", custEmContact);
+					// console.log("newEmContact created", custEmContact);
 					resolve(custEmContact);
 				},
 				error => {
@@ -45,13 +45,13 @@ BMH.factory("emContactFactory", [
 		}
 
 		emContact.update = (profile) => {
-			console.log("profile", profile);
+			// console.log("profile", profile);
 			return $q((resolve, reject) => {
 				$http.
 					put(`http://localhost:5000/api/EmContact/${profile.EmContactId}`, JSON.stringify(profile))
 			.success(
 				custAllergies => {
-					console.log("EmContact Updated", custAllergies);
+					// console.log("EmContact Updated", custAllergies);
 					resolve(custAllergies);
 				},
 				error => {

@@ -31,7 +31,7 @@
 
           <div class="collapsible-body">
             <div class="row noteSection">
-              <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
+              <span ng-click="hideTrue = !hideTrue; change(insurance.ShowOnPublicView)" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
               <div class="col s10">
                 <span class="title">Notes:</span>
                 <p>{{emContact.Notes}}</p>
@@ -62,9 +62,9 @@
               <input ng-model="emContact.Notes" type="text">
             </div>
           </div>
-          <div class="switch col s12">
+          <div  class="switch col s12">
             <label>
-              <input type="checkbox">
+              <input ng-click="change(insurance.ShowOnPublicView)" ng-checked="insurance.ShowOnPublicView==true" type="checkbox" ng-model="insurance.ShowOnPublicView"/>
               <span class="lever right"></span>
               View on Public Profile?
             </label>
@@ -119,7 +119,7 @@
 
           <div class="collapsible-body">
             <div class="row noteSection">
-              <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
+              <span ng-click="hideTrue = !hideTrue; change(insurance.ShowOnPublicView)" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
               <div class="col s10">
                 <span class="title">Notes:</span>
                 <p>{{emContact.Notes}}</p>
@@ -151,9 +151,9 @@
               <input ng-model="emContact.Notes" type="text">
             </div>
           </div>
-          <div class="switch col s12">
+          <div  class="switch col s12">
             <label>
-              <input type="checkbox">
+              <input ng-click="change(insurance.ShowOnPublicView)" ng-checked="insurance.ShowOnPublicView==true" type="checkbox" ng-model="insurance.ShowOnPublicView"/>
               <span class="lever right"></span>
               View on Public Profile?
             </label>

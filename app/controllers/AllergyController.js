@@ -14,10 +14,15 @@ BMH.controller('AllergyCtrl', [
 		$scope.allergyBeingAdded = [];
 
 		let allergyObj = {};
+		let switchVal;
 
 		$scope.deactivate = () => {
         	taskFactory.deactivate();
         }
+
+        $scope.change = (value) => {
+		 	switchVal = value
+		}
 
 		$scope.removeChoice = function() {
 		var lastItem = $scope.allergyBeingAdded.length-1;
@@ -47,9 +52,9 @@ BMH.controller('AllergyCtrl', [
 		$scope.get();
 
 		$scope.update = (profile) => {
-			console.log("updateProfile", profile)
+			profile.ShowOnPublicView = switchVal
 			allergyFactory.update(profile)
-		.then( 
+			.then( 
 			response => {
 				allergyFactory.getAllergy()
 			.then(
@@ -87,7 +92,6 @@ BMH.controller('AllergyCtrl', [
 	        		$scope.allergyList = allergyData.reverse();
 	        		taskFactory.collapsible();
 	        });
-				
 			})
 		}
 	}

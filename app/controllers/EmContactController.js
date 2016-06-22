@@ -14,10 +14,15 @@ BMH.controller('EmContactCtrl', [
 		$scope.emContactBeingAdded = [];
 
 		let emContactObj = {};
+		let switchVal;
 
 		$scope.deactivate = () => {
         	taskFactory.deactivate();
         }
+
+        $scope.change = (value) => {
+		 	switchVal = value
+		}
 
 		$scope.removeChoice = function() {
 		var lastItem = $scope.emContactBeingAdded.length-1;
@@ -47,9 +52,9 @@ BMH.controller('EmContactCtrl', [
 		$scope.get();
 
 		$scope.update = (profile) => {
-			console.log("updateProfile", profile)
+			profile.ShowOnPublicView = switchVal
 			emContactFactory.update(profile)
-		.then( 
+			.then( 
 			response => {
 				emContactFactory.getEmContact()
 			.then(

@@ -14,10 +14,16 @@ BMH.controller('InsuranceCtrl', [
 		$scope.insuranceBeingAdded = [];
 
 		let insuranceObj = {};
+		let switchVal;
 
 		$scope.deactivate = () => {
         	taskFactory.deactivate();
         }
+
+        $scope.change = (value) => {
+			console.log("changing switch value", value)
+		 	switchVal = value
+		}
 
 		$scope.removeChoice = function() {
 		var lastItem = $scope.insuranceBeingAdded.length-1;
@@ -36,17 +42,10 @@ BMH.controller('InsuranceCtrl', [
 			taskFactory.collapsible();			
 		}		
 
-		$scope.clicker = (val) => {
-			console.log(val);
-		}
-
 		$scope.get = () => {
 			insuranceFactory.getInsurance()
 	        .then(
 	        	insuranceData => {
-	        		console.log(insuranceData[0].ShowOnPublicView);
-	        		console.log(insuranceData[1].ShowOnPublicView);
-	        		//console.log(insuranceData[2].ShowOnPublicView);
 	        		$scope.insuranceList = insuranceData.reverse();
 	        		taskFactory.collapsible()
 	        })
@@ -54,7 +53,7 @@ BMH.controller('InsuranceCtrl', [
 		$scope.get();
 		
 		$scope.update = (profile) => {
-			console.log(profile.ShowOnPublicView);
+			profile.ShowOnPublicView = switchVal
 			insuranceFactory.update(profile)
 			.then( 
 			response => {
@@ -77,7 +76,7 @@ BMH.controller('InsuranceCtrl', [
 	        	insuranceData => {
 	        		$scope.insuranceList = insuranceData.reverse();
 	        		taskFactory.collapsible();
-	        });
+	        })
 			})
         }
         
@@ -92,8 +91,7 @@ BMH.controller('InsuranceCtrl', [
 	        	insuranceData => {
 	        		$scope.insuranceList = insuranceData.reverse();
 	        		taskFactory.collapsible();
-	        });
-				
+	        })
 			})
 		}
 	}

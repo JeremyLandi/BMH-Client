@@ -26,7 +26,7 @@
 
           <div class="collapsible-body">
             <div class="row noteSection">
-              <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
+              <span ng-click="hideTrue = !hideTrue; change(insurance.ShowOnPublicView)" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
               <div class="col s3">
                 <span class="title">ID Number:</span>
                 <p>{{insurance.IdNumber}}</p>
@@ -57,7 +57,6 @@
         </li>
       </ul>
 
-      
       <div ng-hide="hideTrue" class="row sectionContainer">
         <form>
           <div class="col s6">
@@ -76,14 +75,10 @@
           </div>
           <div class="switch col s12">
             <label>
-              <input checked="checked" type="checkbox" value="{{insurance.ShowOnPublicView}}" ng-model="insurance.ShowOnPublicView" ng-true-value="'True'" ng-false-value="'False'"/>
+              <input ng-click="change(insurance.ShowOnPublicView)" ng-checked="insurance.ShowOnPublicView==true" type="checkbox" ng-model="insurance.ShowOnPublicView"/>
               <span class="lever right"></span>
               View on Public Profile?
             </label>
-            <!-- <p>
-              <input checked="checked" type="checkbox" value="{{insurance.ShowOnPublicView}}" ng-model="insurance.ShowOnPublicView" ng-true-value="'True'" ng-false-value="'False'" ng-click="clicker(insurance.ShowOnPublicView)" />
-              <label for="test6">Yellow</label>
-            </p> -->
           </div>
 
           <!-- Customer Info Section -->
@@ -123,14 +118,14 @@
               <div class="col s6">
                 <span class="title">Phone:</span>
                 <p>{{insurance.Phone}}</p>
-                <input ng-hide="!hideTrue" ng-model="insurance.InsuranceProvider" type="text">
+                <input ng-hide="!hideTrue" ng-model="insurance.Phone" type="text">
               </div>
             </div>  
           </div> 
 
           <div class="collapsible-body">
             <div class="row noteSection">
-              <span ng-click="hideTrue = !hideTrue" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
+              <span ng-click="hideTrue = !hideTrue; change(insurance.ShowOnPublicView)" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
               <div class="col s3">
                 <span class="title">ID Number:</span>
                 <p>{{insurance.IdNumber}}</p>
@@ -154,7 +149,7 @@
               <div class="col s10">
                 <span class="title">Notes:</span>
                 <p>{{insurance.Notes}}</p>
-                <input ng-hide="!hideTrue" ng-model="insurance.InsuranceProvider" type="text">
+                <input ng-hide="!hideTrue" ng-model="insurance.Notes" type="text">
               </div>
             </div>
           </div>
@@ -195,49 +190,12 @@
             </div>
           </div>
           <div  class="switch col s12">
-            
-       <!--      <div>
-              <label for="basicCheck">Basic checkbox:</label>
-              <input id="basicCheck" type="checkbox" ng-model="basicCheckValue" />
-              <span class="valueItems"><strong>Value:</strong> {{insurance.InsuranceId}}</span><br />
-
-              <label for="{{insurance.InsuranceId}}">Checkbox with custom values:</label>
-              <input checked="checked" id="{{insurance.InsuranceId}}" type="checkbox" ng-model="insurance.InsuranceId"
-                     ng-true-value="right" ng-false-value="wrong"/>
-              <span class="valueItems"><strong>Value:</strong> {{insurance.InsuranceId}}</span>
-            </div> -->
-            <p>
-              <input type="checkbox" ng-model="insurance.ShowOnPublicView" ng-true-value="'true'" ng-false-value="'false'"/>
-              <label for="{{insurance.InsuranceId}}">blue</label>
-            </p>
-
-            <!-- <label>
-              <input type="checkbox" ng-model="insurance.ShowOnPublicView"/>
-            </label>
-            <p>{{insurance.ShowOnPublicView}}</p>
- -->
-            <!-- <label>
-              <input type="checkbox" ng-model="insurance.ShowOnPublicView" ng-true-value="'true'" ng-false-value="'false'"/>
-            </label>
-            <p>{{insurance.ShowOnPublicView}}</p> -->
-            
-         <!--    <label>
-              <input type="radio" name="chickenEgg" value="egg" ng-model="insurance.ShowOnPublicView">
-                Egg
-            </label>
-
             <label>
-              <input type="radio" name="chickenEgg" value="insurance.ShowOnPublicView" ng-model="insurance.ShowOnPublicView">
-                Egg
-            </label> -->
-
-           <!--  <label>
-              <input type="checkbox" value="{{insurance.ShowOnPublicView}}" ng-model="insurance.ShowOnPublicView" ng-true-value="'True'" ng-false-value="'False'"/>
+              <input ng-click="change(insurance.ShowOnPublicView)" ng-checked="insurance.ShowOnPublicView==true" type="checkbox" ng-model="insurance.ShowOnPublicView"/>
               <span class="lever right"></span>
               View on Public Profile?
-            </label> -->
+            </label>
           </div>
-
           <!-- Customer Info Section -->
           <div ng-hide="true">
             <div ng-model="insurance.CustomerId"></div>
