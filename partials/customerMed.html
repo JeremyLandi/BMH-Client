@@ -1,5 +1,5 @@
 <div class="CustomerMed" ng-controller="CustomerMedCtrl">
-  <span ng-click="createBlank()" class=" btn waves-effect waves-light blue col s11 offset-s1">
+  <span ng-click="createBlank()" class=" btn waves-effect waves-light red col s11 offset-s1">
     <i class="material-icons">add</i><h2">Medications</h2>
   </span>
     <!-- CREATE NEW SECTION -->
@@ -127,26 +127,26 @@
         <li ng-hide="hideTrue">
           <div class="collapsible-header">
             <div class="row">
-              <span class="primary-content waves-effect waves-purple right col s1 offset-s11 offset-s10"><i class="material-icons">info</i></span>
+              <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
               <div class="col s3">
                 <span class="title">Brand Name:</span>
                 <p>{{customerMed.BrandName}}</p>
-                <input ng-hide="hideTrue" ng-model="customerMed.BrandName" type="text" placeholder="(i.e Tylenol)">
+                <input ng-hide="!hideTrue" ng-model="customerMed.BrandName" type="text" placeholder="(i.e Tylenol)">
               </div>
               <div class="col s3">
                 <span class="title">Generic Name:</span>
                 <p>{{customerMed.GenericName}}</p>
-                <input ng-hide="hideTrue" ng-model="customerMed.GenericName" type="text" placeholder="(i.e acetaminophen)">
+                <input ng-hide="!hideTrue" ng-model="customerMed.GenericName" type="text" placeholder="(i.e acetaminophen)">
               </div>
               <div class="col s3">
                 <span class="title">Dosage:</span>
                 <p>{{customerMed.Dosage}}</p>
-                <input ng-hide="hideTrue" ng-model="customerMed.Dosage" type="text">
+                <input ng-hide="!hideTrue" ng-model="customerMed.Dosage" type="text">
               </div>
               <div class="col s3">
                 <span class="title">Frequency:</span>
                 <p>{{customerMed.Frequency}}</p>
-                <input ng-hide="hideTrue" ng-model="customerMed.Frequency" type="text">
+                <input ng-hide="!hideTrue" ng-model="customerMed.Frequency" type="text">
               </div>
             </div>  
           </div> 
@@ -157,17 +157,17 @@
               <div class="col s6">
                 <span class="title">Drug Interactions to Avoid:</span>
                 <p>{{customerMed.DrugInteractions}}</p>
-                <input ng-hide="hideTrue" ng-model="customerMed.DrugInteractions" type="text">
+                <input ng-hide="!hideTrue" ng-model="customerMed.DrugInteractions" type="text">
               </div>
               <div class="col s6">
                 <span class="title">Side Effects:</span>
                 <p>{{customerMed.SideEffects}}</p>
-                <input ng-hide="hideTrue" ng-model="customerMed.SideEffects" type="text">
+                <input ng-hide="!hideTrue" ng-model="customerMed.SideEffects" type="text">
               </div>
               <div class="col s10">
                 <span class="title">Notes:</span>
                 <p>{{customerMed.Notes}}</p>
-                <input ng-hide="hideTrue" ng-model="customerMed.Notes" type="text">
+                <input ng-hide="!hideTrue" ng-model="customerMed.Notes" type="text">
               </div>
             </div>
           </div>
@@ -222,7 +222,7 @@
           </div>  
 
           <div class="col s3 offset-s3">
-            <div ng-click="delete(customerMed.customerMedId)" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
+            <div ng-click="delete(customerMed.CustomerMedId)" class="btn-floating btn-medium waves-effect waves-light red"><i class="material-icons">delete</i></div><br>Delete
           </div> 
           <div class="col s3">
             <div class="btn-floating btn-medium waves-effect waves-light yellow"><i ng-click="hideTrue = !hideTrue; deactivate()" class="material-icons">clear</i></div><br>Cancle

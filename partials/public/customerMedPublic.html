@@ -1,0 +1,51 @@
+<div class="CustomerMed" ng-controller="CustomerMedCtrl">
+  <span class="btn waves-effect waves-light red col s11 offset-s1">
+    <h2">Medications</h2>
+  </span>    
+    <div ng-repeat="customerMed in customerMedList">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li ng-hide="hideTrue">
+          <div class="collapsible-header">
+            <div class="row">
+              <span class="primary-content waves-effect waves-purple right col s1 offset-s11 offset-s10"><i class="material-icons">info</i></span>
+              <div class="col s3">
+                <span class="title">Brand Name:</span>
+                <p>{{customerMed.BrandName}}</p>
+              </div>
+              <div class="col s3">
+                <span class="title">Generic Name:</span>
+                <p>{{customerMed.GenericName}}</p>
+              </div>
+              <div class="col s3">
+                <span class="title">Dosage:</span>
+                <p>{{customerMed.Dosage}}</p>
+              </div>
+              <div class="col s3">
+                <span class="title">Frequency:</span>
+                <p>{{customerMed.Frequency}}</p>
+              </div>
+            </div>  
+          </div> 
+
+          <div class="collapsible-body">
+            <div class="row noteSection">
+              <div class="col s6">
+                <span class="title">Drug Interactions to Avoid:</span>
+                <p>{{customerMed.DrugInteractions}}</p>
+              </div>
+              <div class="col s6">
+                <span class="title">Side Effects:</span>
+                <p>{{customerMed.SideEffects}}</p>
+              </div>
+              <div class="col s12">
+                <span class="title">Notes:</span>
+                <p>{{customerMed.Notes}}</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>     
+    </div>
+    <!-- END OF NG-REPEATE -->
+  </div>  
+</div> 

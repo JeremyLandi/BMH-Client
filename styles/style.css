@@ -22,30 +22,49 @@ label {
 h3 {
 text-align: center;
 }
+h1 {
+	font-size: 2.5rem;
+	margin-left: 65px;
+	display: inline;
+}
+
+.PersonalInfo {
+	margin-top: 20px;
+}
+
 .collapsible-header {
 	line-height: 2em;
 }
 .collapsible.popout {
 	margin: 5px;
 }
-.title {
-	color: black;
-}
+
 li {
 	list-style: none;
 }
-
-.container {
+footer {
+	background-color: #268ee0 !important;
+}
+/*.container {
 	margin: 25px auto 0;
-	max-width: 778px;
 	padding: 10px 25px;
 	background-color: rgba(200,200,200,.3);
 	box-shadow: -5px -5px 200px #667;
 	border: 1px outset rgba(0,0,0,.5);
-}
+}*/
 .sectionContainer{
 	width: 80%;
 	margin: 0 auto;
+}
+
+.title {
+	color: #268ee0;
+	font-weight: bold;
+}
+
+.public{
+	background-color: green;
+	color: purple;
 }
 /*.btnSpaceLft {
 	margin-left: 20px;
@@ -71,12 +90,14 @@ input[type=text] {
 .noteSection{
 	margin-top: 10px;
 }
-/*.navbar {
-	background-color: rgba(34,34,34,.5);
+nav {
+	background-color: rgba(200,200,200,.8);
+	margin-bottom: 10px;
 }
-.active {
-	background-color: rgba(34,34,34,.5);	
-}*/
+nav img {
+	margin-top: 5px;
+	width: 50px;
+}
 
 
 /*.forms {          					

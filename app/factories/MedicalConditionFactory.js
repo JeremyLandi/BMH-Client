@@ -14,18 +14,34 @@ BMH.factory("medicalConditionFactory", [
 		medicalCondition.getMedicalCondition = () => {
 			let cust = authFactory.getUser();
 			let token = authFactory.getUserToken();
-			return $q((resolve, reject) => {
-				$http.
-					get(`http://localhost:5000/api/MedicalCondition?id=${cust.CustomerId}&token=${token}`)
-			.success(
-				custMedicalCondition => {
-					console.log("custMedicalCondition", custMedicalCondition);
-					resolve(custMedicalCondition);
-				},
-				error => {
-					reject(error);
+						if (cust == null && token == null) {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/MedicalCondition?custUserName=${$routeParams.CustUserName}`)
+					.success(
+					custMedicalCondition => {
+						console.log("custMedicalCondition", custMedicalCondition);
+						resolve(custMedicalCondition);
+					},
+					error => {
+						reject(error);
+					})
 				})
-			})
+			}
+			else {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/MedicalCondition?id=${cust.CustomerId}&token=${token}`)
+				.success(
+					custMedicalCondition => {
+						console.log("custMedicalCondition", custMedicalCondition);
+						resolve(custMedicalCondition);
+					},
+					error => {
+						reject(error);
+					})
+				})
+			}
 		}
 
 		medicalCondition.createMedicalCondition = (profile) => {

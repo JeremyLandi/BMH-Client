@@ -1,11 +1,90 @@
-<div id="login-view" class="row loggin">
-  <div class="main">
+<div ng-controller="PersonalInfoCtrl">
+<!--     <nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input class="col s8" ng-model="CustUserName" id="search" type="search">
+          <label for="search"><i class="material-icons">search</i></label>
+          <span class="col s2 right" ng-click="routeChange(CustUserName)">search</span>
+        </div>
+      </form>
+    </div>
+  </nav> -->
+        <!-- <span>
+          <img class="brand-logo left" src="../img/logo.png"> 
+          <h1>B.M.H</h1>
+        </span>
+        <i class="material-icons prefix">account_circle</i>
+        <input ng-model="CustUserName" id="icon_prefix" type="text" class="validate" >
+        <button ng-click="routeChange(CustUserName)">search</button> -->      
+  <!-- <nav>
+    <div class="nav-wrapper">
+      <a class=" brand-logo">Logo</a>
+      <a class="brand-logo left logo"><img src="../img/logo.png" alt=""></a>
+       <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate">
+          <label for="icon_prefix">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="material-icons prefix">phone</i>
+          <input id="icon_telephone" type="tel" class="validate">
+          <label for="icon_telephone">Telephone</label>
+        </div>
+      </div>
+    </form>
+  </div>
+    </div>
+  </nav>   
+</div>
+ -->
 
-    <h5>Please Log In, or <span ng-click="register(user)">Sign Up</span> </h5>
-
+<nav>
+  <div class="nav-wrapper">
     <div class="row">
-      <a  ng-click="githubOauth()" class="waves-effect waves-purple btn"><i class="material-icons left">cloud</i>button</a>
-      <a  ng-click="githubOauth()" class="waves-effect waves-purple btn"><i class="material-icons left">cloud</i>button</a>
+      <div class="col 1 logo"><img src="../img/logo.png" alt=""></div>
+      <label class="col 1">B.M.H</label>
+      <div class="col s4 offset-s4">
+        <form>
+          <div class="input-field">
+            <input ng-model="CustUserName" id="search" type="search" />
+            <label for="search"><i class="material-icons">account_circle</i></label>
+          </div>
+        </form>
+      </div>
+      <div class="col s1">
+        <ul class="right">
+          <li><div ng-click="routeChange(CustUserName)"><i  class="material-icons">search</i></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div id="login-view" class="row loggin">
+<!--  <div id="printableArea">
+      <h1>Print me</h1>v
+
+    <div style="margin-left:200px; height:200px; width:200px;" id="qrcode"></div>
+  Print this div
+  </div>
+
+</div>
+
+<input type="button" ng-click="printDiv('printableArea')" value="print a div!" />
+   <a href="javascript:window.print()" class="btn primary large no-print">Print this quote</a>
+   <button ng-click="print()"></button>
+
+
+    <h5>Please Log In, or <span ng-click="register(user)">Sign Up</span> </h5> -->
+  
+        
+    <div class="row">
+      <a  ng-click="githubOauth()" class="waves-effect waves-purple blue btn"><i class="material-icons left">cloud</i>GitHub</a>
     </div>
 
     <div class="login-or">
@@ -28,16 +107,9 @@
         <label for="inputCustUserName">User Name</label>
         <input type="text" class="form-control" ng-model="user.CustUserName">
       </div>
-     <!--  <div class="checkbox pull-right">
-        <label>
-          <input type="checkbox">
-          Remember me </label>
-      </div> -->
-      
-        <button type="submit" class="waves-effect waves-purple btn" ng-click="login(user)">Log In
+        <button type="submit" class="waves-effect waves-purple blue btn" ng-click="login(user)">Log In
         </button>
-        <button type="submit" class="waves-effect waves-purple btn" ng-click="register(user)">Register
+        <button type="submit" class="waves-effect waves-purple blue btn" ng-click="register(user)">Register
         </button>
     </form>
-  </div>
 </div>

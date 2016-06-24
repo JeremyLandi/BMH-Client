@@ -1,0 +1,52 @@
+<div class="Insurance" ng-controller="InsuranceCtrl">
+  <span class=" btn waves-effect waves-light red col s11 offset-s1">
+    <h2">Insurance</h2>
+  </span>
+    <div ng-repeat="insurance in insuranceList">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header">
+            <div class="row">
+              <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
+              <div class="col s6">
+                <span class="title">Insurance Provider:</span>
+                <p>{{insurance.InsuranceProvider}}</p>
+              </div>
+              <div class="col s6">
+                <span class="title">Phone:</span>
+                <p>{{insurance.Phone}}</p>
+              </div>
+            </div>  
+          </div> 
+
+          <div class="collapsible-body">
+            <div class="row noteSection">
+              <span ng-click="hideTrue = !hideTrue; change(insurance.ShowOnPublicView)" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
+              <div class="col s3">
+                <span class="title">ID Number:</span>
+                <p>{{insurance.IdNumber}}</p>
+              </div>
+              <div class="col s3">
+                <span class="title">Group Number:</span>
+                <p>{{insurance.GroupNumber}}</p>
+              </div>
+              <div class="col s3">
+                <span class="title">BIN:</span>
+                <p>{{insurance.BIN}}</p>
+              </div>
+              <div class="col s3">
+                <span class="title">Deducatable:</span>
+                <p>{{insurance.Deducatable}}</p>
+              </div>
+              <div class="col s10">
+                <span class="title">Notes:</span>
+                <p>{{insurance.Notes}}</p>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- END OF NG-REPEATE -->
+  </div>  
+</div> 

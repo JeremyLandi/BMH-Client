@@ -13,20 +13,35 @@ BMH.factory("insuranceFactory", [
 
 		insurance.getInsurance = () => {
 			let cust = authFactory.getUser();
-			console.log("cust", cust.CustomerId);
 			let token = authFactory.getUserToken();
-			return $q((resolve, reject) => {
-				$http.
-					get(`http://localhost:5000/api/Insurance?id=${cust.CustomerId}&token=${token}`)
-			.success(
-				custInsurance => {
-					console.log("custInsurance", custInsurance);
-					resolve(custInsurance);
-				},
-				error => {
-					reject(error);
+			if (cust == null && token == null) {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/Insurance?custUserName=${$routeParams.CustUserName}`)
+					.success(
+					custInsurance => {
+						console.log("custInsurance", custInsurance);
+						resolve(custInsurance);
+					},
+					error => {
+						reject(error);
+					})
 				})
-			})
+			}
+			else {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/Insurance?id=${cust.CustomerId}&token=${token}`)
+				.success(
+					custInsurance => {
+						console.log("custInsurance", custInsurance);
+						resolve(custInsurance);
+					},
+					error => {
+						reject(error);
+					})
+				})
+			}
 		}
 
 		insurance.createInsurance = (profile) => {

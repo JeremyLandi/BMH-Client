@@ -1,0 +1,38 @@
+<div class="EmContact" ng-controller="EmContactCtrl">
+  <span class=" btn waves-effect waves-light red col s11 offset-s1">
+    <h2">Emergency Contacts</h2>
+  </span>
+  <div ng-repeat="emContact in emContactList">
+    <ul class="collapsible popout" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header">
+          <div class="row">
+            <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
+             <div class="col s4">
+              <span class="title">Contact Name:</span>
+              <p>{{emContact.EmContactName}}</p>
+            </div>
+            <div class="col s4">
+              <span class="title">Relationship:</span>
+              <p>{{emContact.Relationship}}</p>
+            </div>
+            <div class="col s4">
+              <span class="title">Number:</span>
+              <p>{{emContact.EmergencyContactPhone}}</p>
+            </div>
+          </div>  
+        </div> 
+
+        <div class="collapsible-body">
+          <div class="row noteSection">
+            <div class="col s10">
+              <span class="title">Notes:</span>
+              <p>{{emContact.Notes}}</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- END OF NG-REPEATE -->
+</div>  

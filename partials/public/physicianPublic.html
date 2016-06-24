@@ -1,0 +1,93 @@
+<div class="Physician" ng-controller="PhysicianCtrl">
+  <span class="btn waves-effect waves-light red col s11 offset-s1">
+  <h2">Physician</h2>
+  </span>
+    <div ng-repeat="physician in physicianList">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header">
+            <div class="row">
+              <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
+              <div class="col s4">
+                <span class="title">Physician:</span>
+                <p>{{physician.PhysicianName}}</p>
+              </div>
+              <div class="col s4">
+                <span class="title">Title:</span>
+                <p>{{physician.Title}}</p>
+              </div>
+              <div class="col s4">
+                  <span class="title">Business Name:</span>
+                  <p>{{physician.BusinessName}}</p>
+              </div>
+            </div>  
+          </div> 
+
+          <div class="collapsible-body">
+            <div class="row noteSection">
+              <div class="col s2">
+                <span class="title">Phone:</span>
+                <p>{{physician.Phone}}</p>
+              </div>
+              <div class="col s5">
+                <span class="title">Address:</span>
+                <p>{{physician.Address}}</p>
+              </div>
+              <div class="col s3">
+                <span class="title">City:</span>
+                <p>{{physician.City}}</p>
+              </div>
+              <div class="col s2">
+                <span class="title">State:</span>
+                <p>{{physician.State}}</p>
+              </div>
+            </div>
+          </div>
+        </li>
+<!-- 
+        <li ng-hide="true">
+          <div class="collapsible-header">
+            <div class="row">
+              <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
+              <div class="col s4">
+                <span class="title">Physician:</span>
+                <p>{{physician.PhysicianName}}</p>
+              </div>
+              <div class="col s4">
+                <span class="title">Title:</span>
+                <p>{{physician.Title}}</p>
+              </div>
+              <div class="col s4">
+                  <span class="title">Business Name:</span>
+                  <p>{{physician.BusinessName}}</p>
+              </div>
+            </div>  
+          </div> 
+
+          <div class="collapsible-body">
+            <div noteSection">
+              <div class="col s2">
+                <span class="title">Phone:</span>
+                <p>{{physician.Phone}}</p>
+              </div>
+              <div class="col s5">
+                <span class="title">Address:</span>
+                <p>{{physician.Address}}</p>
+              </div>
+              <div class="col s3">
+                <span class="title">City:</span>
+                <p>{{physician.City}}</p>
+              </div>
+              <div class="col s2">
+                <span class="title">State:</span>
+                <p>{{physician.State}}</p>
+              </div>
+            </div>
+          </div>
+        </li> -->
+      </ul>      
+    </div>
+    <!-- END OF NG-REPEATE -->
+  <!-- END OF EDIT SECTION -->
+  </div>  
+</div> 

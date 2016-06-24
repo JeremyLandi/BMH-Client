@@ -47,6 +47,12 @@ BMH.controller('PhysicianCtrl', [
 			physicianFactory.getPhysician()
 	        .then(
 	        	physicianData => {
+	        		//console.log("physicianData", physicianData)
+	        		// foreach(){
+	        		// 	if (physicianData.ShowOnPublicView == true) {
+	        		// 		$("ul").addClass("public")
+	        		// 	}
+	        		// }
 	        		//console.log("physicianData", physicianData);
 	        		$scope.physicianList = physicianData
 	        		taskFactory.collapsible()
