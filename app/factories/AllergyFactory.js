@@ -14,18 +14,34 @@ BMH.factory("allergyFactory", [
 		allergy.getAllergy = () => {
 			let cust = authFactory.getUser();
 			let token = authFactory.getUserToken();
-			return $q((resolve, reject) => {
-				$http.
-					get(`http://localhost:5000/api/Allergy?id=${cust.CustomerId}&token=${token}`)
-			.success(
-				custAllergies => {
-					// console.log("custAllergies", custAllergies);
-					resolve(custAllergies);
-				},
-				error => {
-					reject(error);
+			if (cust == null && token == null) {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/Allergy?custUserName=${$routeParams.CustUserName}`)
+					.success(
+					custAllergy => {
+						console.log("custAllergy", custAllergy);
+						resolve(custAllergy);
+					},
+					error => {
+						reject(error);
+					})
 				})
-			})
+			}
+			else {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/Allergy?id=${cust.CustomerId}&token=${token}`)
+				.success(
+					custAllergy => {
+						console.log("custAllergy", custAllergy);
+						resolve(custAllergy);
+					},
+					error => {
+						reject(error);
+					})
+				})
+			}
 		}
 
 		allergy.createAllergy = (profile) => {

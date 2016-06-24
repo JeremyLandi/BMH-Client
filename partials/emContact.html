@@ -1,5 +1,5 @@
 <div class="EmContact" ng-controller="EmContactCtrl">
-  <span ng-click="createBlank()" class=" btn waves-effect waves-light blue col s11 offset-s1">
+  <span ng-click="createBlank()" class=" btn waves-effect waves-light red col s11 offset-s1">
     <i class="material-icons">add</i><h2">Emergency Contacts</h2>
   </span>
     <!-- CREATE NEW SECTION -->
@@ -31,7 +31,7 @@
 
           <div class="collapsible-body">
             <div class="row noteSection">
-              <span ng-click="hideTrue = !hideTrue; change(insurance.ShowOnPublicView)" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
+              <span ng-click="hideTrue = !hideTrue; change(emContact.ShowOnPublicView)" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
               <div class="col s10">
                 <span class="title">Notes:</span>
                 <p>{{emContact.Notes}}</p>
@@ -64,7 +64,7 @@
           </div>
           <div  class="switch col s12">
             <label>
-              <input ng-click="change(insurance.ShowOnPublicView)" ng-checked="insurance.ShowOnPublicView==true" type="checkbox" ng-model="insurance.ShowOnPublicView"/>
+              <input ng-click="change(emContact.ShowOnPublicView)" ng-checked="emContact.ShowOnPublicView==true" type="checkbox" ng-model="emContact.ShowOnPublicView"/>
               <span class="lever right"></span>
               View on Public Profile?
             </label>
@@ -119,7 +119,7 @@
 
           <div class="collapsible-body">
             <div class="row noteSection">
-              <span ng-click="hideTrue = !hideTrue; change(insurance.ShowOnPublicView)" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
+              <span ng-click="hideTrue = !hideTrue; change(emContact.ShowOnPublicView)" class="waves-effect waves-purple right col s2"><i class="material-icons">edit_mode</i></span>
               <div class="col s10">
                 <span class="title">Notes:</span>
                 <p>{{emContact.Notes}}</p>
@@ -153,7 +153,7 @@
           </div>
           <div  class="switch col s12">
             <label>
-              <input ng-click="change(insurance.ShowOnPublicView)" ng-checked="insurance.ShowOnPublicView==true" type="checkbox" ng-model="insurance.ShowOnPublicView"/>
+              <input ng-click="change(emContact.ShowOnPublicView)" ng-checked="emContact.ShowOnPublicView==true" type="checkbox" ng-model="emContact.ShowOnPublicView"/>
               <span class="lever right"></span>
               View on Public Profile?
             </label>

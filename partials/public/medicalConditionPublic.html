@@ -1,0 +1,29 @@
+<div class="MedicalCondition" ng-controller="MedicalConditionCtrl">
+  <span class=" btn waves-effect waves-light red col s11 offset-s1">
+    <h2">Medical Conditions</h2>
+  </span>
+  <div ng-repeat="medicalCondition in medicalConditionList">
+    <ul class="collapsible popout" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header">
+          <div class="row">
+            <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
+            <div class="col s8">
+              <span class="title">Medical Condition:</span>
+              <p>{{medicalCondition.MedicalConditionName}}</p>
+            </div>
+          </div>  
+        </div> 
+        <div class="collapsible-body">
+          <div class="row noteSection">
+            <div class="col s10">
+              <span class="title">Description:</span>
+              <p>{{medicalCondition.Description}}</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>      
+  </div>
+    <!-- END OF NG-REPEATE --> 
+</div> 

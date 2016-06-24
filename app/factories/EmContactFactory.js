@@ -14,18 +14,34 @@ BMH.factory("emContactFactory", [
 		emContact.getEmContact = () => {
 			let cust = authFactory.getUser();
 			let token = authFactory.getUserToken();
-			return $q((resolve, reject) => {
-				$http.
-					get(`http://localhost:5000/api/EmContact?id=${cust.CustomerId}&token=${token}`)
-			.success(
-				custEmContact => {
-					// console.log("custEmContact", custEmContact);
-					resolve(custEmContact);
-				},
-				error => {
-					reject(error);
+			if (cust == null && token == null) {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/EmContact?custUserName=${$routeParams.CustUserName}`)
+					.success(
+					custEmContact => {
+						console.log("custEmContact", custEmContact);
+						resolve(custEmContact);
+					},
+					error => {
+						reject(error);
+					})
 				})
-			})
+			}
+			else {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/EmContact?id=${cust.CustomerId}&token=${token}`)
+				.success(
+					custEmContact => {
+						console.log("custEmContact", custEmContact);
+						resolve(custEmContact);
+					},
+					error => {
+						reject(error);
+					})
+				})
+			}
 		}
 
 		emContact.createEmContact = (profile) => {

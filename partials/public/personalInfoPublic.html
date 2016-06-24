@@ -1,0 +1,87 @@
+<div class="PersonalInfo" ng-controller="PersonalInfoCtrl">
+            
+  <span class=" btn waves-effect waves-light red col s11 offset-s1">
+      <h2">Personal Information</h2>
+  </span>
+        <!-- <div id="printable">
+                     Print this div -->
+       	<!--  </div>
+        <button ng-click="printDiv('printableArea');">Print Div</button>  -->
+
+  <div ng-hide="hideTrue" class="row">
+    <div class="col m4 col s6">
+      <label class="title">First Name:</label>
+      <p>{{currentCustomer.CustFirst}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.CustFirst" type="text">
+    </div>
+    <div class="col m4 col s6">
+      <label class="title">Last Name:</label>
+      <p> {{currentCustomer.CustLast}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.CustLast" type="text">
+    </div>
+	<div class="col m4 col s6">
+      <div style="margin-top: -50px; height:50; width:50;" id="qrcode"></div>
+    </div>
+    <div class="col m3 col s12">
+      <label class="title">Phone:</label>
+      <p>{{currentCustomer.CustPhone}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.CustPhone" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">Email:</label>
+      <p>{{currentCustomer.CustEmail}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.Email" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">Address:</label>
+      <p>{{currentCustomer.CustAddress}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.Address" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">City:</label>
+      <p>{{currentCustomer.CustCity}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.City" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">State:</label>
+      <p>{{currentCustomer.CustState}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.CustState" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">Birth Date:</label>
+      <p>{{currentCustomer.BirthDate}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.BirthDate" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">Gender:</label>
+      <p>{{currentCustomer.Gender}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.Gender" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">Hair:</label>
+      <p>{{currentCustomer.Hair}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.Hair" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">Eye color:</label>
+      <p>{{currentCustomer.EyeColor}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.EyeColor" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">Height:</label>
+      <p>{{currentCustomer.Height}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.Height" type="text">
+    </div>
+    <div class="col m3 col s6">
+      <label class="title">Weight:</label>
+      <p>{{currentCustomer.Weight}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.Weight" type="text">
+    </div>
+    <br>
+    <div class="col m3 col s6">
+      <label class="title">Blood type:</label>
+      <p>{{currentCustomer.BloodType}}</p>
+      <input ng-hide="!hideTrue" ng-model="personalInfo.BloodType" type="text">
+    </div>
+  </div>
+</div>

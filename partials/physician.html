@@ -1,5 +1,5 @@
 <div class="Physician" ng-controller="PhysicianCtrl">
-  <span ng-click="createBlank()" class=" btn waves-effect waves-light blue col s11 offset-s1">
+  <span ng-click="createBlank()" class=" btn waves-effect waves-light red col s11 offset-s1">
     <i class="material-icons">add</i><h2">Physician</h2>
   </span>
     <!-- CREATE NEW SECTION -->
@@ -10,16 +10,20 @@
             <div class="row">
               <span ng-show="$last" ng-click="removeChoice()" class="primary-content waves-effect waves-purple right col s1 remove"><i class="material-icons">delete</i></span>
               <span class="primary-content waves-effect waves-purple right col s1 offset-s9"><i class="material-icons">info</i></span>
-              
-              <div class="col s6">
+              <div class="col s4">
                 <span class="title">Physician:</span>
                 <p>{{physician.PhysicianName}}</p>
                 <input ng-hide="hideTrue" ng-model="physician.PhysicianName" type="text">
               </div>
-              <div class="col s6">
-                <span class="title">Phone:</span>
-                <p>{{physician.Phone}}</p>
-                <input ng-hide="hideTrue" ng-model="physician.Phone" type="text">
+              <div class="col s4">
+                <span class="title">Title:</span>
+                <p>{{physician.Title}}</p>
+                <input ng-hide="hideTrue" ng-model="physician.Title" type="text">
+              </div>
+               <div class="col s4">
+                <span class="title">Business Name:</span>
+                <p>{{physician.BusinessName}}</p>
+                <input ng-hide="hideTrue" ng-model="physician.BusinessName" type="text">
               </div>
             </div>  
           </div> 
@@ -27,50 +31,62 @@
           <div class="collapsible-body">
             <div class="row noteSection">
               <span ng-click="hideTrue = !hideTrue; change(physician.ShowOnPublicView)" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
-              <div class="col s3">
-                <span class="title">ID Number:</span>
-                <p>{{physician.IdNumber}}</p>
-                <input ng-hide="hideTrue" ng-model="physician.IdNumber" type="text">
+              <div class="col s2">
+                <span class="title">Phone:</span>
+                <p>{{physician.Phone}}</p>
+                <input ng-hide="hideTrue" ng-model="physician.Phone" type="text">
+              </div>
+              <div class="col s5">
+                <span class="title">Address:</span>
+                <p>{{physician.Address}}</p>
+                <input ng-hide="hideTrue" ng-model="physician.Address" type="text">
               </div>
               <div class="col s3">
-                <span class="title">Group Number:</span>
-                <p>{{physician.GroupNumber}}</p>
-                <input ng-hide="hideTrue" ng-model="physician.GroupNumber" type="text">
+                <span class="title">City:</span>
+                <p>{{physician.City}}</p>
+                <input ng-hide="hideTrue" ng-model="physician.City" type="text">
               </div>
-              <div class="col s3">
-                <span class="title">BIN:</span>
-                <p>{{physician.BIN}}</p>
-                <input ng-hide="hideTrue" ng-model="physician.BIN" type="text">
-              </div>
-              <div class="col s3">
-                <span class="title">Deducatable:</span>
-                <p>{{physician.Deducatable}}</p>
-                <input ng-hide="hideTrue" ng-model="physician.Deducatable" type="text">
-              </div>
-              <div class="col s10">
-                <span class="title">Notes:</span>
-                <p>{{physician.Notes}}</p>
-                <input ng-hide="hideTrue" ng-model="physician.Notes" type="text">
+              <div class="col s2">
+                <span class="title">State:</span>
+                <p>{{physician.State}}</p>
+                <input ng-hide="hideTrue" ng-model="physician.State" type="text">
               </div>
             </div>
           </div>
         </li>
       </ul>
 
+      <!-- EDIT SECTION -->
       <div ng-hide="hideTrue" class="row sectionContainer">
         <form>
-          <div class="col s6">
-            <span class="title">Physician Provider:</span>
+          <div class="col s4">
+            <span class="title">Physician:</span>
             <input ng-model="physician.PhysicianName" type="text">
           </div>
-          <div class="col s6">
-            <span class="title">Phone:</span>
-            <input ng-model="physician.Phone" type="text">
+          <div class="col s4">
+            <span class="title">Title:</span>
+            <input ng-model="physician.Title" type="text">
+          </div>
+          <div class="col s4">
+            <span class="title">Business Name:</span>
+            <input ng-model="physician.BusinessName" type="text">
           </div>
           <div class="row">
-            <div class="col s12">
-              <span class="title">Notes:</span>
-              <input ng-model="physician.Notes" type="text">
+            <div class="col s2">
+              <span class="title">Phone:</span>
+              <input ng-model="physician.Phone" type="text">
+            </div>
+            <div class="col s5">
+              <span class="title">Address:</span>
+              <input ng-model="physician.Address" type="text">
+            </div>
+            <div class="col s3">
+              <span class="title">City:</span>
+              <input ng-model="physician.City" type="text">
+            </div>
+            <div class="col s2">
+              <span class="title">State:</span>
+              <input ng-model="physician.State" type="text">
             </div>
           </div>
           <div class="switch col s12">
@@ -109,47 +125,47 @@
         <li ng-hide="hideTrue">
           <div class="collapsible-header">
             <div class="row">
-              <span class="primary-content waves-effect waves-purple right col s1 offset-s11 offset-s10"><i class="material-icons">info</i></span>
-              <div class="col s6">
+              <span class="primary-content waves-effect waves-purple right col s2 offset-s10"><i class="material-icons">info</i></span>
+              <div class="col s4">
                 <span class="title">Physician:</span>
                 <p>{{physician.PhysicianName}}</p>
                 <input ng-hide="!hideTrue" ng-model="physician.PhysicianName" type="text">
               </div>
-              <div class="col s6">
-                <span class="title">Phone:</span>
-                <p>{{physician.Phone}}</p>
-                <input ng-hide="!hideTrue" ng-model="physician.Phone" type="text">
+              <div class="col s4">
+                <span class="title">Title:</span>
+                <p>{{physician.Title}}</p>
+                <input ng-hide="!hideTrue" ng-model="physician.Title" type="text">
               </div>
+               <div class="col s4">
+                <span class="title">Business Name:</span>
+                <p>{{physician.BusinessName}}</p>
+                <input ng-hide="!hideTrue" ng-model="physician.BusinessName" type="text">
             </div>  
           </div> 
+        </div>  
 
           <div class="collapsible-body">
             <div class="row noteSection">
               <span ng-click="hideTrue = !hideTrue; change(physician.ShowOnPublicView)" class="waves-effect waves-purple right col s1 offset-s11"><i class="material-icons">edit_mode</i></span>
-              <div class="col s3">
-                <span class="title">ID Number:</span>
-                <p>{{physician.IdNumber}}</p>
-                <input ng-hide="!hideTrue" ng-model="physician.IdNumber" type="text">
+              <div class="col s2">
+                <span class="title">Phone:</span>
+                <p>{{physician.Phone}}</p>
+                <input ng-hide="!hideTrue" ng-model="physician.Phone" type="text">
+              </div>
+              <div class="col s5">
+                <span class="title">Address:</span>
+                <p>{{physician.Address}}</p>
+                <input ng-hide="!hideTrue" ng-model="physician.Address" type="text">
               </div>
               <div class="col s3">
-                <span class="title">Group Number:</span>
-                <p>{{physician.GroupNumber}}</p>
-                <input ng-hide="!hideTrue" ng-model="physician.GroupNumber" type="text">
+                <span class="title">City:</span>
+                <p>{{physician.City}}</p>
+                <input ng-hide="!hideTrue" ng-model="physician.City" type="text">
               </div>
-              <div class="col s3">
-                <span class="title">BIN:</span>
-                <p>{{physician.BIN}}</p>
-                <input ng-hide="!hideTrue" ng-model="physician.BIN" type="text">
-              </div>
-              <div class="col s3">
-                <span class="title">Deducatable:</span>
-                <p>{{physician.Deducatable}}</p>
-                <input ng-hide="!hideTrue" ng-model="physician.Deducatable" type="text">
-              </div>
-              <div class="col s10">
-                <span class="title">Notes:</span>
-                <p>{{physician.Notes}}</p>
-                <input ng-hide="!hideTrue" ng-model="physician.PhysicianName" type="text">
+              <div class="col s2">
+                <span class="title">State:</span>
+                <p>{{physician.State}}</p>
+                <input ng-hide="!hideTrue" ng-model="physician.State" type="text">
               </div>
             </div>
           </div>
@@ -159,29 +175,35 @@
       <!-- EDIT SECTION -->
       <div ng-hide="!hideTrue" class="row sectionContainer">
         <form>
-          <div class="col s6">
+          <div class="col s4">
             <span class="title">Physician:</span>
             <input ng-model="physician.PhysicianName" type="text">
           </div>
-          <div class="col s6">
-            <span class="title">Phone:</span>
-            <input ng-model="physician.Phone" type="text">
+          <div class="col s4">
+            <span class="title">Title:</span>
+            <input ng-model="physician.Title" type="text">
           </div>
-          <div class="col s3">
-            <span class="title">ID Number:</span>
-            <input ng-model="physician.IdNumber" type="text">
+          <div class="col s4">
+            <span class="title">Business Name:</span>
+            <input ng-model="physician.BusinessName" type="text">
           </div>
-          <div class="col s3">
-            <span class="title">Group Number:</span>
-            <input ng-model="physician.GroupNumber" type="text">
-          </div>
-          <div class="col s3">
-            <span class="title">BIN:</span>
-            <input ng-model="physician.BIN" type="text">
-          </div>
-          <div class="col s3">
-            <span class="title">Deducatable:</span>
-            <input ng-model="physician.Deducatable" type="text">
+          <div class="row">
+            <div class="col s2">
+              <span class="title">Phone:</span>
+              <input ng-model="physician.Phone" type="text">
+            </div>
+            <div class="col s5">
+              <span class="title">Address:</span>
+              <input ng-model="physician.Address" type="text">
+            </div>
+            <div class="col s3">
+              <span class="title">City:</span>
+              <input ng-model="physician.City" type="text">
+            </div>
+            <div class="col s2">
+              <span class="title">State:</span>
+              <input ng-model="physician.State" type="text">
+            </div>
           </div>
           <div class="row">
             <div class="col s12">

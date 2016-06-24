@@ -3,6 +3,7 @@
 let BMH = angular.module('BMH', [
 	'ngRoute',
 	'firebase',
+	'ui.materialize',
 ])
 
 let isAuth = (authFactory) => new Promise((resolve, reject) => {
@@ -30,8 +31,8 @@ BMH.config(['$routeProvider',
 			controller: 'MainCtrl',
 			// resolve: {isAuth}
 		})
-		.when('/main/:custUserName', {
-			templateUrl: 'partials/mainPublic.html',
+		.when('/main/:CustUserName', {
+			templateUrl: 'partials/public/mainPublic.html',
 			controller: 'MainPublicCtrl'
 		})
 		.otherwise('/');

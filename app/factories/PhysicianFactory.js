@@ -13,20 +13,37 @@ BMH.factory("physicianFactory", [
 
 		physician.getPhysician = () => {
 			let cust = authFactory.getUser();
-			//console.log("cust", cust);
 			let token = authFactory.getUserToken();
-			return $q((resolve, reject) => {
-				$http.
-					get(`http://localhost:5000/api/Physician?id=${cust.CustomerId}&token=${token}`)
-			.success(
-				custPhysician => {
-					console.log("custPhysician", custPhysician);
-					resolve(custPhysician);
-				},
-				error => {
-					reject(error);
+			console.log("cust", cust);
+			if (cust == null && token == null) {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/Physician?custUserName=${$routeParams.CustUserName}`)
+					.success(
+					custPhysician => {
+						console.log("custPhysician", custPhysician);
+						resolve(custPhysician);
+					},
+					error => {
+						reject(error);
+					})
 				})
-			})
+			}
+			else {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/Physician?id=${cust.CustomerId}&token=${token}`)
+				.success(
+					custPhysician => {
+						console.log("custPhysician", custPhysician);
+						resolve(custPhysician);
+					},
+					error => {
+						reject(error);
+					})
+				})
+			}
+
 		}
 
 		physician.createPhysician = (profile) => {

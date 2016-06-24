@@ -13,20 +13,36 @@ BMH.factory("customerMedFactory", [
 
 		customerMed.getCustomerMed = () => {
 			let cust = authFactory.getUser();
-			console.log("cust", cust);
 			let token = authFactory.getUserToken();
-			return $q((resolve, reject) => {
-				$http.
-					get(`http://localhost:5000/api/CustomerMed?id=${cust.CustomerId}&token=${token}`)
-			.success(
-				customerMed => {
-					console.log("customerMed", customerMed);
-					resolve(customerMed);
-				},
-				error => {
-					reject(error);
+			console.log("cust", cust);
+			if (cust == null && token == null) {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/CustomerMed?custUserName=${$routeParams.CustUserName}`)
+					.success(
+					custCustomerMed => {
+						console.log("custCustomerMed", custCustomerMed);
+						resolve(custCustomerMed);
+					},
+					error => {
+						reject(error);
+					})
 				})
-			})
+			}
+			else {
+				return $q((resolve, reject) => {
+					$http.
+						get(`http://localhost:5000/api/CustomerMed?id=${cust.CustomerId}&token=${token}`)
+				.success(
+					custCustomerMed => {
+						console.log("custCustomerMed", custCustomerMed);
+						resolve(custCustomerMed);
+					},
+					error => {
+						reject(error);
+					})
+				})
+			}
 		}
 
 		customerMed.createCustomerMed = (profile) => {
