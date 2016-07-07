@@ -90,7 +90,7 @@ BMH.controller('PersonalInfoCtrl', [
 			height: 128,
 					// *** THE TEXT LINQ NEEDS TO LINK TO ANOTHER PUBLIC VIEW
 			//text: `http://localhost:8080/#/main/${cust.CustUserName}`
-			text: `http//nashvillesoftwareschool.com`
+			text: `http://107.170.58.49/`
 		});	
 
 		$scope.update = (info) => {

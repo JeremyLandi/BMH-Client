@@ -5,24 +5,11 @@
     <title>B.M.H</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-<!--     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyBS9JVd-AFZLM5_KqiZ1rtmWN96QLdZXTA",
-        authDomain: "basicmedicalhistory.firebaseapp.com",
-        databaseURL: "https://basicmedicalhistory.firebaseio.com",
-        storageBucket: "basicmedicalhistory.appspot.com",
-      };
-      firebase.initializeApp(config);
-    </script> -->
-
-    <!-- Compiled and minified CSS -->
+    <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
+    <!-- Customer CSS -->
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
@@ -30,29 +17,18 @@
     <div ng-view></div>
 
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-     <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="lib/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="lib/bower_components/angular/angular.min.js"></script>
-    <!-- <script src="lib/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="lib/bower_components/angular-aria/angular-aria.js"></script>
-    <script src="lib/bower_components/angular-messages/angular-messages.js"></script> -->
     <script src="lib/bower_components/angular-route/angular-route.min.js"></script>
-    <!-- <link href="lib/bower_components/mdi/css/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css"> -->
-
     <script src="lib/bower_components/oauth-js/dist/oauth.min.js"></script>
-
-    <!-- <script src="lib/bower_components/firebase/firebase.js"></script> -->
     <script src="lib/bower_components/angularfire/dist/angularfire.min.js"></script>
     <script src="lib/jquery-qrcode/src/jquery.qrcode.js"></script>
     <script src="lib/jquery-qrcode/src/qrcode.js"></script>
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-
+    <script type="text/javascript" src="lib/bower_components/materialize/dist/js/materialize.min.js"></script>
     <script type="text/javascript" src="lib/bower_components/angular-materialize/src/angular-materialize.js"></script>
           
     <script src="app.js"></script>
-
+    <!-- Factories -->
     <script src="app/factories/AllergyFactory.js"></script>
     <script src="app/factories/AuthFactory.js"></script>
     <script src="app/factories/EmContactFactory.js"></script>
@@ -62,8 +38,7 @@
     <script src="app/factories/PhysicianFactory.js"></script> 
     <script src="app/factories/CustomerMedFactory.js"></script>
     <script src="app/factories/TaskFactory.js"></script>
-
-
+    <!-- Controllers -->
     <script src="app/controllers/LoginController.js"></script>
     <script src="app/controllers/MainController.js"></script>
     <script src="app/controllers/MainPublicController.js"></script>
@@ -74,8 +49,5 @@
     <script src="app/controllers/PersonalInfoController.js"></script>
     <script src="app/controllers/PhysicianController.js"></script> 
     <script src="app/controllers/CustomerMedController.js"></script>
-
-
-   
 </body>
 </html>

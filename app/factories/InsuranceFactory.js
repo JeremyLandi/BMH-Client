@@ -20,7 +20,6 @@ BMH.factory("insuranceFactory", [
 						get(`http://localhost:5000/api/Insurance?custUserName=${$routeParams.CustUserName}`)
 					.success(
 					custInsurance => {
-						console.log("custInsurance", custInsurance);
 						resolve(custInsurance);
 					},
 					error => {
@@ -34,7 +33,6 @@ BMH.factory("insuranceFactory", [
 						get(`http://localhost:5000/api/Insurance?id=${cust.CustomerId}&token=${token}`)
 				.success(
 					custInsurance => {
-						console.log("custInsurance", custInsurance);
 						resolve(custInsurance);
 					},
 					error => {
@@ -45,13 +43,11 @@ BMH.factory("insuranceFactory", [
 		}
 
 		insurance.createInsurance = (profile) => {
-			console.log("profile", profile);
 			return $q((resolve, reject) => {
 				$http.
 					post(`http://localhost:5000/api/Insurance`, JSON.stringify(profile))
 			.success(
 				custInsurance => {
-					console.log("newInsurance created", custInsurance);
 					resolve(custInsurance);
 				},
 				error => {
@@ -67,7 +63,6 @@ BMH.factory("insuranceFactory", [
 					put(`http://localhost:5000/api/Insurance/${profile.InsuranceId}`, JSON.stringify(profile))
 			.success(
 				custInsurance => {
-					console.log("Insurance Updated", custInsurance);
 					resolve(custInsurance);
 				},
 				error => {
@@ -80,6 +75,5 @@ BMH.factory("insuranceFactory", [
 		return $http
 			.delete(`http://localhost:5000/api/Insurance/${id}`)	
 		}
-
 	return insurance;
 }])
