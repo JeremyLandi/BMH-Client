@@ -10,14 +10,6 @@ BMH.controller('LoginController', [
 
 		let newCust = {};
 
-		// $scope.print = () => {
-	 //    	var $print = $("#printable")
-		//     //window.print() stops JS execution
-		//     window.print();
-		//     //Remove div once printed
-		//     $print.remove();
-		// }	
-
 		$scope.printDiv = (divName) => {
      var printContents = $("#printableArea").html();
      var originalContents = $("document").html();
@@ -28,16 +20,6 @@ BMH.controller('LoginController', [
 
      document.body.innerHTML = originalContents;
 }
-
-		// QR CODE	
-	 //    $('#qrcode').qrcode({
-		// 	render	: "canvas",
-		// 	width: 128,
-		// 	height: 128,
-		// 			// *** THE TEXT LINQ NEEDS TO LINK TO ANOTHER PUBLIC VIEW
-		// 	//text: `http://localhost:8080/#/main/${cust.CustUserName}`
-		// 	text: `http://jeremylandi.com`
-		// });	
 
 		$scope.register = function(customer) {
             const email = customer.email;
@@ -76,7 +58,7 @@ BMH.controller('LoginController', [
 		// main OAuth function
 		$scope.githubOauth = function () {
 			// OAuth / Github API integration key (accessed by TryAuth in OAuth.io BMH Github Integrated APIs section)
-			OAuth.initialize('B-0gV1snXfTltFNgEUvICyOtbJg')
+			OAuth.initialize('48j7eSWJJtuZYsMU_rI0ABhAdjA')
 
 			OAuth.popup('github').done(function(result) {
 			  console.log(result.access_token)
