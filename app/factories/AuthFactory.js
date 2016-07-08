@@ -4,8 +4,10 @@ BMH.factory('authFactory', [
 	'$q',
 	'$http',
 	'$location',
+    '$route',
+    '$timeout',
 
-function ($q, $http, $location) {
+function ($q, $http, $location, $route, $timeout) {
 	let firebaseRef = new Firebase('https://bmhistory.firebaseio.com/');
     let currentFbUser = null;
     let Authenticate = {};
@@ -14,12 +16,10 @@ function ($q, $http, $location) {
 	let currentUserToken = null;
 
 	Authenticate.getUser = () => {
-		console.log("currentUser", currentUser);
 		return currentUser;
 	},
 	Authenticate.setUser = (user) => {
 		currentUser = user;
-		//console.log(`currentUser:`, currentUser);
 	},
 	Authenticate.getUserToken = () => {
 		return currentUserToken;
@@ -37,44 +37,42 @@ function ($q, $http, $location) {
         }
     }
 
-    Authenticate.createUser = (user, pass, CustUserName) => {
+    //creates firebase authorized user
+    Authenticate.createUser = (user, pass) => {
         return $q((resolve, reject) => {
             return firebaseRef.createUser({
                 email: user,
-                password: pass,
-                custName: CustUserName               
+                password: pass             
             }, function(error, userData) {
                 if (error) {
                     console.log("Error creating user:", error);                    
                 } else {
-                    // console.log(user);
-                    //console.log("Successfully created user account with uid:", userData.uid);
                     return resolve(userData);    
                 }
             })
         });
     }
 
-    Authenticate.createProfile = (CustUserName) => {
+    //creates user in my database
+    Authenticate.createProfile = (customer) => {
         return $q((resolve, reject) => {
-            $http.post(`http://localhost:5000/api/Customer?CustUserName=${customer.CustUserName}`, customer);
+            $http.post(`http://localhost:5000/api/Customer?email=${customer.CustEmail}`, customer);
         })
     }
 
-    Authenticate.loginUser = (user, pass, CustUserName) => {
+    Authenticate.loginUser = (userEmail, pass) => {
         return $q(function(resolve, reject) {
             firebaseRef.authWithPassword({
-                email: user,
+                email: userEmail,
                 password: pass
             }, function(error, authData) {
                 if (error) {
                     console.log("Login Failed!", error);
                 } else {
                 	$http
-		    			.get(`http://localhost:5000/api/Customer?CustUserName=${CustUserName}`)
+		    			.get(`http://localhost:5000/api/Customer?email=${userEmail}`)
 		    			.then(
 		    				response => {
-		    					//console.log("response", response);
 		    					let customer = response.data[0];
 		    					Authenticate.setUserToken(authData.token)
 		    					Authenticate.setUser(customer)
@@ -92,7 +90,12 @@ function ($q, $http, $location) {
             });
         });
     }
-    Authenticate.logoutUser = () => firebaseRef.unauth();
-    console.log("user logged out");
+
+    Authenticate.logoutUser = () => {
+        console.log("logout")
+        firebaseRef.unauth();
+        $timeout(function() {$location.path("/")});
+        //$route.reload();
+    }
     return Authenticate;
 }]);

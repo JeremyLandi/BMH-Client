@@ -1,47 +1,31 @@
 <div ng-controller="PersonalInfoCtrl">
-<nav>
-  <div class="nav-wrapper">
-    <div class="row">
-      <div class="col 1 logo"><img src="../img/logo.png" alt=""></div>
-      <label class="col 1">B.M.H</label>
-      <div class="col s4 offset-s4">
-        <form>
-          <div class="input-field">
-            <input ng-model="CustUserName" id="search" type="search" />
-            <label for="search"><i class="material-icons">account_circle</i></label>
-          </div>
-        </form>
-      </div>
-      <div class="col s1">
-        <ul class="right">
-          <li><div ng-click="routeChange(CustUserName)"><i  class="material-icons">search</i></div></li>
-        </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <div class="row">
+        <div class="col 1 logo"><img src="../img/logo.png" alt=""></div>
+        <label class="col 1">B.M.H</label>
+        <div class="col s4 offset-s4">
+          <form>
+            <div class="input-field">
+              <input ng-model="CustUserName" id="search" type="search" />
+              <label for="search"><i class="material-icons">account_circle</i></label>
+            </div>
+          </form>
+        </div>
+        <div class="col s1">
+          <ul class="right">
+            <li>
+              <div ng-click="routeChange(CustUserName)"><i  class="material-icons">search</i></div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-
-<div id="login-view" class="row loggin">
-<!--  <div id="printableArea">
-      <h1>Print me</h1>v
-
-    <div style="margin-left:200px; height:200px; width:200px;" id="qrcode"></div>
-  Print this div
-  </div>
-
-</div>
-
-<input type="button" ng-click="printDiv('printableArea')" value="print a div!" />
-   <a href="javascript:window.print()" class="btn primary large no-print">Print this quote</a>
-   <button ng-click="print()"></button>
-
-
-    <h5>Please Log In, or <span ng-click="register(user)">Sign Up</span> </h5> -->
-  
-        
+  <div ng-hide="register" id="login-view" class="row loggin">        
     <div class="row">
-      <a  ng-click="githubOauth()" class="waves-effect waves-purple blue btn"><i class="material-icons left">cloud</i>GitHub</a>
+      <a  ng-click="githubOauth(customer)" class="waves-effect waves-purple blue btn"><i class="material-icons left">cloud</i>GitHub</a>
     </div>
 
     <div class="login-or">
@@ -52,21 +36,38 @@
     <form role="form">
       <div class="form-group">
         <label for="inputUsernameEmail">Email</label>
-        <input type="email" class="form-control" ng-model="user.email">
+        <input type="email" class="form-control validate" required="" aria-required="true" ng-model="customer.email">
       </div>
       <div class="form-group">
-        <!-- <a class="pull-right" href="#">Forgot password?</a> -->
         <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" ng-model="user.password">
+        <input type="password" class="form-control validate" required="" aria-required="true" ng-model="customer.password">
+      </div>
+      <button type="submit" class="waves-effect waves-purple blue btn" ng-click="login(customer)">Log In
+      </button>
+      <button type="submit" class="waves-effect waves-purple blue btn" ng-click="register = !register">Sign Up
+      </button>
+    </form>
+  </div>
+
+  <!-- Registeration View -->
+  <div ng-hide="!register" id="login-view" class="row loggin">        
+    <form role="form">
+      <div class="form-group">
+        <label for="inputUsernameEmail">Email</label>
+        <input type="email" class="form-control validate" required="" aria-required="true" ng-model="customer.email">
       </div>
       <div class="form-group">
-        <!-- <a class="pull-right" href="#">Forgot password?</a> -->
-        <label for="inputCustUserName">User Name</label>
-        <input type="text" class="form-control" ng-model="user.CustUserName">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control validate" required="" aria-required="true" ng-model="customer.password">
       </div>
-        <button type="submit" class="waves-effect waves-purple blue btn" ng-click="login(user)">Log In
-        </button>
-        <button type="submit" class="waves-effect waves-purple blue btn" ng-click="register(user)">Register
-        </button>
+      <div class="form-group">
+        <label for="inputCustUserName">User Name</label>
+        <input type="text" class="form-control validate" required="" aria-required="true" ng-model="customer.CustUserName">
+      </div>
+      <button type="submit" class="waves-effect waves-purple blue btn" ng-click="register = !register">Back to Login
+      </button>
+      <button type="submit" class="waves-effect waves-purple blue btn" ng-click="reg(customer)">Register
+      </button>
     </form>
-</div>
+  </div>
+</div>  

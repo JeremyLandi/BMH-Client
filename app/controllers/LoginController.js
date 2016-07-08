@@ -10,50 +10,74 @@ BMH.controller('LoginController', [
 
 		let newCust = {};
 
-		$scope.printDiv = (divName) => {
-     var printContents = $("#printableArea").html();
-     var originalContents = $("document").html();
+		$scope.customer = {
+			email: null,
+			password: null,
+			CustUserName: null
+		}
 
-     document.body.innerHTML = printContents;
-
-     window.print();
-
-     document.body.innerHTML = originalContents;
-}
-
-		$scope.register = function(customer) {
-            const email = customer.email;
-            const password = customer.password;
-            const CustUserName = customer.CustUserName   
-            authFactory.createUser(email, password, CustUserName)
-            .then(
-                () => authFactory.loginUser(customer.email, customer.password, customer.CustUserName),
-                (error) => console.log("could not register customer")
-            ).then(
-                (data) => { 
-                	newCust.CreatedDate = new Date();
-                	newCust.CustUserName = customer.CustUserName
-                	newCust.CustEmail = customer.email
-
-                	authFactory.createProfile(newCust), 
-                    $location.path("/main");    
-                    console.log("successfully registered")
-            },
-            (error) => console.log("could not authFactory customer")
-            )
-        }
-        
-        $scope.login = function(customer) {
-            authFactory.loginUser(customer.email, customer.password, customer.CustUserName)
+		$scope.login = function(customer) {
+            authFactory.loginUser(customer.email, customer.password)
             .then(
                 (resolve) => {
         			console.log("resolve", resolve);
-                         
-                    //console.log("successfully logged in");
                 },
                 (error) => console.log("could not authFactory customer")
             );
         }
+
+        $scope.logout = () => {        	
+        	authFactory.logoutUser();
+        }
+
+		$scope.reg = function(customer) {
+			//checks to make sure all fields are filled
+			if (customer.CustUserName === null || customer.email === null || customer.password === null) {
+		        return;
+		    }
+		    else
+		    {
+		    	//checks to see if userName or email are currently being used		    	
+		    	$http
+					.get(`http://localhost:5000/api/Customer?email=${customer.email}`)
+					.then(
+						response => {
+							//if not, then creates new user							
+							if (response.data[0] === undefined) {
+
+								const email = customer.email;
+					            const password = customer.password;
+					            const CustUserName = customer.CustUserName 
+
+					            //create an account in my database
+					            newCust.CreatedDate = new Date();
+			                	newCust.CustUserName = CustUserName
+			                	newCust.CustEmail = email
+					            authFactory.createProfile(newCust)
+
+					            //creates a firebase account  
+					            authFactory.createUser(email, password)
+					            .then(
+					                () => authFactory.loginUser(email, password),
+					                (error) => console.log("could not register customer")
+					            ).then(
+					                (data) => { 
+					                    $location.path("/main");    
+					                    console.log("successfully registered")
+					            	},
+					            	(error) => console.log("could not authFactory customer")
+					            )
+							}
+							else if (response.CustEmail !== customer.email && response.CustUserName !== customer.CustUserName ) {
+								alert("Name or Email already exists")
+							}
+						},
+						error => {
+							console.log("Could not find that Customer", response)
+						}
+					)
+		    }    
+	    }
 
 		// main OAuth function
 		$scope.githubOauth = function () {
@@ -61,7 +85,6 @@ BMH.controller('LoginController', [
 			OAuth.initialize('48j7eSWJJtuZYsMU_rI0ABhAdjA')
 
 			OAuth.popup('github').done(function(result) {
-			  console.log(result.access_token)
 
 			  authFactory.setUserToken(result.access_token);
 
@@ -97,7 +120,7 @@ BMH.controller('LoginController', [
 				    	// Customer has already been created
 				    	if (response.status === 409) {
 				    		$http
-				    			.get(`http://localhost:5000/api/Customer?CustUserName=${customerAlias}`)
+				    			.get(`http://localhost:5000/api/Customer?email=${data.email}`)
 				    			.then(
 				    				response => {
 				    					let customer = response.data[0];
@@ -115,5 +138,5 @@ BMH.controller('LoginController', [
 				console.log(arguments);
 			});
 		};
-	}
+	}    
 ]);

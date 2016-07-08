@@ -20,7 +20,6 @@ BMH.factory("medicalConditionFactory", [
 						get(`http://localhost:5000/api/MedicalCondition?custUserName=${$routeParams.CustUserName}`)
 					.success(
 					custMedicalCondition => {
-						console.log("custMedicalCondition", custMedicalCondition);
 						resolve(custMedicalCondition);
 					},
 					error => {

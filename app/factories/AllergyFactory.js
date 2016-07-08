@@ -20,7 +20,6 @@ BMH.factory("allergyFactory", [
 						get(`http://localhost:5000/api/Allergy?custUserName=${$routeParams.CustUserName}`)
 					.success(
 					custAllergy => {
-						console.log("custAllergy", custAllergy);
 						resolve(custAllergy);
 					},
 					error => {

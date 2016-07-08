@@ -29,7 +29,7 @@ BMH.config(['$routeProvider',
 		.when('/main/', {
 			templateUrl: 'partials/main.html',
 			controller: 'MainCtrl',
-			// resolve: {isAuth}
+			resolve: {isAuth}
 		})
 		.when('/main/:CustUserName', {
 			templateUrl: 'partials/public/mainPublic.html',
