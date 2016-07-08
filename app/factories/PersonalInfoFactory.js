@@ -65,13 +65,13 @@ BMH.factory("personalInfoFactory", [
 		}
 
 		personalInfo.update = (profile) => {
-			console.log("profile", profile);
+			//console.log("profile", profile);
 			return $q((resolve, reject) => {
 				$http.
 					put(`http://localhost:5000/api/Customer/${profile.CustomerId}`, JSON.stringify(profile))
 			.success(
 				custPersonalInfo => {
-					console.log("PersonalInfo Updated", custPersonalInfo);
+					//console.log("PersonalInfo Updated", custPersonalInfo);
 					resolve(custPersonalInfo);
 				},
 				error => {
